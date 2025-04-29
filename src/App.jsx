@@ -6,6 +6,10 @@ import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
 import PlantPattyWaterSection from './components/PlantPattyWaterSection';
+import heart from './assets/Capa_2.svg';
+import LandUseSection from './components/LandUseSection';
+import EmissionsRadarChart from './components/Emissions';
+
 function App() {
   const [showMore, setShowMore] = useState(false);
   const section3Ref = useRef(null);
@@ -24,6 +28,7 @@ function App() {
      <Box className="snap-wrapper">
       <Box className="snap-section">
         <Stack alignItems="center">
+          <img src={heart} alt="Heart"/>
           <Typography sx={{ fontWeight: 'bold', fontSize: 107 }}>
             nutri
             <Box component="span" sx={{ color: '#E95322' }}>
@@ -31,7 +36,7 @@ function App() {
             </Box>
           </Typography>
           <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-            plant-based eating offers more benefits than you might think
+            Explore the benefits of plant-based eating
           </Typography>
         </Stack>
       </Box>
@@ -71,6 +76,34 @@ function App() {
 
       <Box className="snap-section">
         <PlantPattyWaterSection />
+      </Box>
+
+      <Box className="snap-section">
+        <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
+          But its not just water consumption.
+        </Typography>
+        <Typography sx={{ fontWeight: 'bold', fontSize: 45}}>
+          Plant-based food also has a smaller land footprint.
+        </Typography>
+      </Box>
+
+      <Box className="snap-section">
+        <LandUseSection/>
+      </Box>
+
+      <Box className="snap-section">
+        <Stack alignItems={"center"}>
+          <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
+            It doesn't end there.</Typography>
+            <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
+              Plant based food is also much kinder to the planet in terms of emissions.
+            </Typography>
+          
+          </Stack>
+      </Box>
+
+      <Box className="snap-section">
+        <EmissionsRadarChart/>
       </Box>
 
       <Box className="snap-section">

@@ -16,6 +16,7 @@
     "@hello-pangea/dnd": "^18.0.1",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
+    "@mui/x-charts": "^8.1.0",
     "@observablehq/plot": "^0.6.17",
     "canvas-confetti": "^1.9.3",
     "chart.js": "^4.4.9",

@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import { motion } from 'framer-motion'
 
 import healthyImg from '../assets/healthy.png'
-import earthImg   from '../assets/earth.png'
+import earthImg from '../assets/earth.png'
 
 export default function ImageMorpher() {
   const [inView, setInView]     = useState(false)
@@ -33,31 +33,31 @@ export default function ImageMorpher() {
     if (inView) {
       timer = setTimeout(() => {
         setFlipped(true)
-      }, 2000)
+      }, 1500)
     }
     return () => clearTimeout(timer)
   }, [inView])
 
   const wrapperStyles = {
-    width:          size,
-    height:         size,
-    margin:         '0 auto',
-    position:       'relative',
-    perspective:    '1000px',
+    width: size,
+    height: size,
+    margin: '0 auto',
+    position: 'relative',
+    perspective: '1000px',
     transformStyle: 'preserve-3d',
-    borderRadius:   '50%',
-    overflow:       'hidden',
+    borderRadius: '50%',
+    overflow: 'hidden',
   }
 
   const faceStyles = {
-    width:              '100%',
-    height:             '100%',
-    position:           'absolute',
-    top:                 0,
-    left:                0,
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
     backfaceVisibility: 'hidden',
-    transformStyle:     'preserve-3d',
-    transformOrigin:    '50% 50%',
+    transformStyle: 'preserve-3d',
+    transformOrigin: '50% 50%',
   }
 
   return (

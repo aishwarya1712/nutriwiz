@@ -68,7 +68,7 @@ export default function FancyWaterImpactSection({ onNext }) {
     >
       <Typography variant="h4" fontWeight={700} sx={{fontSize: 50}}>
        Can you guess the amount of virtual water it takes to make<br/>&nbsp;
-        <Box component="span" sx={{ color: '#4ac3af' }}>one beef patty?</Box>
+        <Box component="span" sx={{ color: '#df264e' }}>one beef patty?</Box>
       </Typography>
 
       <Typography variant="h3" sx={{ color: '#4ac3af' }}>

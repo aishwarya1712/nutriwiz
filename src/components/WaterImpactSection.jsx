@@ -1,11 +1,10 @@
-/* FancyWaterImpactSection.jsx ---------------------------------------- */
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import {
-  Box, Typography, IconButton, Chip, Stack,
+  Box, Typography, IconButton
 } from '@mui/material';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
-import SyncIcon from '@mui/icons-material/Sync';          // faucet knob
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import SyncIcon from '@mui/icons-material/Sync';
+import { motion, useAnimation } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
 const TRUE_GAL = 400;
@@ -19,7 +18,6 @@ export default function FancyWaterImpactSection({ onNext }) {
   const controls = useAnimation();
   const intervalRef = useRef(null);
 
-  /* ------------ start / stop ------------ */
   const toggleFill = async () => {
     if (done) return onNext?.();
 
@@ -47,7 +45,6 @@ export default function FancyWaterImpactSection({ onNext }) {
     }
   };
 
-  /* ------------ derived % for visuals ------------ */
   const pct = gallons / TRUE_GAL;
   const waveY = TANK_H * (1 - pct);
 
@@ -69,7 +66,6 @@ export default function FancyWaterImpactSection({ onNext }) {
         px: 2,
       }}
     >
-      {/* ------- title & ticker ------- */}
       <Typography variant="h4" fontWeight={700} sx={{fontSize: 50}}>
        Can you guess the amount of virtual water it takes to make<br/>&nbsp;
         <Box component="span" sx={{ color: '#4ac3af' }}>one beef patty?</Box>
@@ -111,9 +107,8 @@ export default function FancyWaterImpactSection({ onNext }) {
             initial={false}
             transition={{ ease: 'linear', duration: 0.5 }}
           />
-          {/* subtle wave top (extra flair) */}
           <motion.img
-            src="/wave.svg"           /* tiny 600×100 transparent PNG/SVG of a sine wave */
+            src="/wave.svg"
             alt=""
             style={{ position: 'absolute', bottom: 0, width: '100%' }}
             animate={{ y: waveY - 10 }}
@@ -184,24 +179,6 @@ export default function FancyWaterImpactSection({ onNext }) {
         {done ? 'continue ↓' : filling ? 'pause' : 'start'}&nbsp;the flow
       </Typography>
 
-      {/* ------- equivalence chips ------- */}
-      <AnimatePresence>
-        {done && (
-          <Stack
-            direction="row"
-            spacing={1}
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { staggerChildren: 0.1 } }}
-          >
-            {['26 showers 🚿', '3 200 coffees ☕️', '6 400 bottles 💧'].map((txt) => (
-              <motion.div key={txt} initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                <Chip label={txt} variant="outlined" color="primary" />
-              </motion.div>
-            ))}
-          </Stack>
-        )}
-      </AnimatePresence>
 
       {/* ------- scroll hint ------- */}
       {done && (

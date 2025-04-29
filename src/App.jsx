@@ -3,6 +3,9 @@ import './App.css'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import FlashCard from './components/Flashcard';
 import WaterImpactSection from './components/WaterImpactSection';
+import ImageMorpher from './components/ImageMorpher';
+import CoffeeCupSection from './components/CoffeeCupSection';
+import PlantPattyWaterSection from './components/PlantPattyWaterSection';
 function App() {
   const [showMore, setShowMore] = useState(false);
   const section3Ref = useRef(null);
@@ -32,6 +35,14 @@ function App() {
           </Typography>
         </Stack>
       </Box>
+      <Box className="snap-section">
+        <Stack alignItems="center">
+          <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
+            Every bite of the food you eat shapes your health, and the planet's
+          </Typography>
+          <ImageMorpher />
+        </Stack>
+      </Box>
 
       <Box className="snap-section">
             <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
@@ -52,6 +63,14 @@ function App() {
       </Box> */}
       <Box className="snap-section">
         <WaterImpactSection onNext={snapDown} />
+      </Box>
+
+      <Box className="snap-section">
+        <CoffeeCupSection />
+      </Box>
+
+      <Box className="snap-section">
+        <PlantPattyWaterSection />
       </Box>
 
       <Box className="snap-section">

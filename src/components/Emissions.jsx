@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, Stack, Paper } from '@mui/material'
+import { Box, Typography, Stack } from '@mui/material'
 import { Unstable_RadarChart as RadarChart } from '@mui/x-charts/RadarChart'
 
 export default function EmissionsRadarChartWithInfo() {
@@ -19,9 +19,19 @@ export default function EmissionsRadarChartWithInfo() {
   ];
 
   return (
-    <Box sx={{ width: '100%', mx: 'auto', px: 2, py: 4 }}>
-      <Typography fontSize={32} fontWeight={"bold"} align="center" gutterBottom>
-      Plant-based diets see the lowest daily greenhouse-gas emissions across CO₂, CH₄, and N₂O.
+    <Box
+      className="snap-section"
+      sx={{
+        width: '100%',
+        mx: 'auto',
+        px: { xs: 2, md: 4 },
+        py: 4,
+        minHeight: '100vh',
+        boxSizing: 'border-box',
+      }}
+    >
+      <Typography fontSize={32} fontWeight="bold" align="center" gutterBottom>
+        Plant-based diets are associated with the lowest release of major greenhouse gases — CO₂, CH₄, and N₂O.
       </Typography>
 
       <RadarChart
@@ -36,40 +46,47 @@ export default function EmissionsRadarChartWithInfo() {
           }
         }}
       />
-      <Typography fontSize={20} fontWeight={"bold"} align="center" gutterBottom>
-      Daily GHG Emissions by Diet Group
+
+      <Typography fontSize={20} fontWeight="bold" align="center" gutterBottom>
+        Daily GHG Emissions by Diet Group
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" gutterBottom>
         Units: CO₂ in kg per day (kg d⁻¹); CH₄ and N₂O in g per day (g d⁻¹)
       </Typography>
 
-      <Stack justifyContent={"center"} sx={{px: 20}} direction={{ xs: 'column', md: 'row' }} spacing={2} mt={4}>
-        <Paper elevation={3} sx={{ p: 2, flex: 1 }}>
+      <Stack
+        justifyContent="center"
+        sx={{ px: { xs: 2, md: 20 }, flexWrap: 'wrap' }}
+        direction={{ xs: 'column', md: 'row' }}
+        spacing={2}
+        mt={4}
+      >
+        <Stack elevation={3} sx={{ p: 2, flex: 1, background: "none", border: "1px solid #E95322", borderRadius: "10px" }}>
           <Typography variant="h6" fontWeight="bold">
             Vegans
           </Typography>
           <Typography>
             Emit the lowest GHGs: only 2.16 kg CO₂, 4.39 g CH₄, and 0.71 g N₂O per day.
           </Typography>
-        </Paper>
+        </Stack>
 
-        <Paper elevation={3} sx={{ p: 2, flex: 1 }}>
+        <Stack elevation={3} sx={{ p: 2, flex: 1, background: "none", border: "1px solid #E95322", borderRadius: "10px" }}>
           <Typography variant="h6" fontWeight="bold">
             High Meat-Eaters
           </Typography>
           <Typography>
             Produce up to 7.28 kg CO₂ and 65.40 g CH₄ daily—over 3x more methane than vegans.
           </Typography>
-        </Paper>
+        </Stack>
 
-        <Paper elevation={3} sx={{ p: 2, flex: 1 }}>
+        <Stack elevation={3} sx={{ p: 2, flex: 1, background: "none", border: "1px solid #E95322", borderRadius: "10px" }}>
           <Typography variant="h6" fontWeight="bold">
             Methane Spotlight
           </Typography>
           <Typography>
             CH₄ is a powerful short-lived gas; high meat diets emit ~15x more CH₄ than vegan diets.
           </Typography>
-        </Paper>
+        </Stack>
       </Stack>
     </Box>
   )

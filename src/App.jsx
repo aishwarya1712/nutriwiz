@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
-import { Box, Button, Stack, Typography } from '@mui/material'
-import FlashCard from './components/FlashCard';
+import { Box, Stack, Typography } from '@mui/material'
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
@@ -9,6 +8,46 @@ import PlantPattyWaterSection from './components/PlantPattyWaterSection';
 import heart from './assets/Capa_2.svg';
 import LandUseSection from './components/LandUseSection';
 import EmissionsRadarChart from './components/Emissions';
+import FlashCardCarousel from './components/FlashCardCarousel';
+
+const cards = [
+  { front: 
+    <Typography align="center" variant="h4" fontWeight={"bold"}>Think plant-based diets lack complete protein?</Typography>, 
+    back: <Stack spacing={2}>
+    <Typography fontSize={24} align="center" fontWeight={"bold"}>
+      Plant-based foods contain all 20 amino acids, including the 9 essential amino acids.
+    </Typography>
+    <Typography>
+      A well-balanced, plant-based diet will provide adequate amounts of essential amino acids and prevent protein deficiency.
+      Essential amino acids can be obtained by eating certain combinations of plant-based foods.
+      Examples include brown rice with beans, and hummus with whole wheat pita. 
+    </Typography>
+    <Typography variant="subtitle1" align="center" color="textSecondary" fontSize={12}>
+      Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC6893534/
+      https://pmc.ncbi.nlm.nih.gov/articles/PMC3662288/
+    </Typography>
+    </Stack>},
+  { front: <Typography align="center" variant="h4" fontWeight={"bold"}>Think plant-based diets are expensive?</Typography>, 
+  back: <Stack spacing={2}>
+    <Typography fontSize={24} align="center" fontWeight={"bold"}>
+      Plant-based consumption is associated with lower food expenditures compared to meat-based consumption.
+    </Typography>
+    <Typography>
+      Plant-based consumers do not spend more but in fact less than any consumer assessed. It is healthier, more sustainable and cheaper.
+    </Typography>
+  </Stack> },
+  {
+    front: <Typography align="center" variant="h4" fontWeight={"bold"}>Another myth about plant-based food</Typography>,
+    back: <Stack spacing={2}>
+    <Typography fontSize={24} align="center" fontWeight={"bold"}>
+      Address the myth
+    </Typography>
+    <Typography>
+      Some description
+    </Typography>
+    </Stack>
+  }
+]
 
 function App() {
   const [showMore, setShowMore] = useState(false);
@@ -79,9 +118,6 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-        <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-          But its not just water consumption.
-        </Typography>
         <Typography sx={{ fontWeight: 'bold', fontSize: 45}}>
           Plant-based food also has a smaller land footprint.
         </Typography>
@@ -92,14 +128,11 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-        <Stack alignItems={"center"}>
           <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
             It doesn't end there.</Typography>
             <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-              Plant based food is also much kinder to the planet in terms of emissions.
+              Plant based food is much kinder to the planet in terms of emissions.
             </Typography>
-          
-          </Stack>
       </Box>
 
       <Box className="snap-section">
@@ -107,16 +140,31 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-      <FlashCard
-        front={<Typography variant="h4">🌱 Quinoa</Typography>}
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
+          The health benefits of plant-based diets are extraordinary.
+        </Typography>
+      </Box>
+
+      <Box className="snap-section">
+      {/* <FlashCard
+        front={<Typography align="center" variant="h4">Think plant-based diets lack complete protein?</Typography>}
         back={
+          <Stack>
           <Typography align="center">
-            A complete protein seed rich in iron and magnesium.
+            Think again!
           </Typography>
+          <Typography align="center">
+            Plant-based foods contain all 20 amino acids, including the 9 indispensable amino acids
+          </Typography>
+          <Typography align="center">
+            Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC6893534/
+          </Typography>
+          </Stack>
         }
-        width={320}
-        height={220}
-      />
+        width={500}
+        height={350}
+      /> */}
+      <FlashCardCarousel cards={cards} cardWidth={550} cardHeight={400} />
       </Box>
 
       

@@ -6,7 +6,6 @@ import coffeeImg from '../assets/coffee.png'
 const cupSize = 80
 const gap     = 8 
 
-
 const containerVariants = {
   hidden: {},
   show: {
@@ -60,16 +59,16 @@ export default function CoffeeCupSection() {
     <Box
       ref={containerRef}
       sx={{
-        position:    'relative',
-        left:        '50%',
-        marginLeft:  '-100vw',
-        width:       '100vw',
-        height:      '100vh',
-        overflow:    'hidden',
-        display:     'flex',
-        flexDirection:'column',
-        alignItems:  'center',
-        pt:          4,
+        position: 'relative',
+        left: '50%',
+        marginLeft: '-100vw',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        pt: 4,
       }}
     >
       <Typography variant="h4" gutterBottom fontWeight={"bold"}>
@@ -82,12 +81,12 @@ export default function CoffeeCupSection() {
         initial="hidden"
         animate={inView ? 'show' : 'hidden'}
         sx={{
-          flex:               1,
-          width:              '100%',
-          display:            'grid',
-          gridTemplateColumns:`repeat(auto-fill, ${cupSize}px)`,
-          justifyContent:     'start',
-          gap:                `${gap}px`,
+          flex: 1,
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: `repeat(auto-fill, ${cupSize}px)`,
+          justifyContent: 'start',
+          gap: `${gap}px`,
         }}
       >
         {cups.map((_, idx) => (
@@ -98,8 +97,8 @@ export default function CoffeeCupSection() {
             alt="Coffee Cup"
             variants={cupVariants}
             sx={{
-              width:   `${cupSize}px`,
-              height:  `${cupSize}px`,
+              width: `${cupSize}px`,
+              height: `${cupSize}px`,
               display: 'block',
             }}
           />

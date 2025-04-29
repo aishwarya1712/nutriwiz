@@ -1,4 +1,3 @@
-/* FlashCard.jsx --------------------------------------------------------- */
 import { useState } from 'react';
 import { Box, Card } from '@mui/material';
 
@@ -15,7 +14,7 @@ export default function FlashCard({
 
   return (
     <Box
-      sx={{ perspective: 1200, width, height, cursor: 'pointer', outline: 'none' }}
+      sx={{ perspective: 1200, width, height: height + 30, cursor: 'pointer', outline: 'none' }}
       tabIndex={0}
       onClick={toggle}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggle()}
@@ -24,7 +23,7 @@ export default function FlashCard({
         elevation={elevation}
         sx={{
           width: 1,
-          height: 1,
+          height,
           borderRadius: radius,
           bgcolor: 'background.paper',
           transformStyle: 'preserve-3d',
@@ -34,6 +33,7 @@ export default function FlashCard({
           position: 'relative',
         }}
       >
+        {/* Front Side */}
         <Box
           sx={{
             position: 'absolute',
@@ -41,13 +41,14 @@ export default function FlashCard({
             backfaceVisibility: 'hidden',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             p: 2,
           }}
         >
           {front}
         </Box>
 
+        {/* Back Side */}
         <Box
           sx={{
             position: 'absolute',
@@ -63,6 +64,8 @@ export default function FlashCard({
           {back}
         </Box>
       </Card>
+
+      
     </Box>
   );
 }

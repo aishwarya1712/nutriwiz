@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
 import { Box, Button, Stack, Typography } from '@mui/material'
-import FlashCard from './components/Flashcard';
+import FlashCard from './components/FlashCard';
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';

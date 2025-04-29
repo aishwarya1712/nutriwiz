@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
 import { Box, Button, Stack, Typography } from '@mui/material'
-
+import FlashCard from './components/Flashcard';
+import WaterImpactSection from './components/WaterImpactSection';
 function App() {
   const [showMore, setShowMore] = useState(false);
   const section3Ref = useRef(null);
@@ -12,10 +13,12 @@ function App() {
     }
   }, [showMore]);
 
+  const snapDown = () =>
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+
   return (
     <>
      <Box className="snap-wrapper">
-      {/* Section 1 */}
       <Box className="snap-section">
         <Stack alignItems="center">
           <Typography sx={{ fontWeight: 'bold', fontSize: 107 }}>
@@ -25,13 +28,18 @@ function App() {
             </Box>
           </Typography>
           <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-            build plant-powered meals
+            plant-based eating offers more benefits than you might think
           </Typography>
         </Stack>
       </Box>
 
-      {/* Section 2 */}
-      <Box className="snap-section" sx={{ position: 'relative' }}>
+      <Box className="snap-section">
+            <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
+              Let's talk environment
+            </Typography>
+      </Box>
+
+      {/* <Box className="snap-section" sx={{ position: 'relative' }}>
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
           Did you know it takes <span style={{ color: '#4ac3af' }}>460 gallons of water</span>
           &nbsp;to make a single beef patty?
@@ -41,9 +49,27 @@ function App() {
             Show more
           </Button>
           </Box>
+      </Box> */}
+      <Box className="snap-section">
+        <WaterImpactSection onNext={snapDown} />
       </Box>
 
-      {/* Section 3 */}
+      <Box className="snap-section">
+      <FlashCard
+        front={<Typography variant="h4">🌱 Quinoa</Typography>}
+        back={
+          <Typography align="center">
+            A complete protein seed rich in iron and magnesium.
+          </Typography>
+        }
+        width={320}
+        height={220}
+      />
+      </Box>
+
+      
+
+      {/* Section 4 */}
       {showMore && (
         <Box className="snap-section" ref={section3Ref}>
           <Typography sx={{ fontWeight: 'bold', fontSize: 48 }} variant="h4">

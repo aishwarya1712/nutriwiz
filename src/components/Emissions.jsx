@@ -21,7 +21,7 @@ export default function EmissionsRadarChartWithInfo() {
   return (
     <Box sx={{ width: '100%', mx: 'auto', px: 2, py: 4 }}>
       <Typography fontSize={32} fontWeight={"bold"} align="center" gutterBottom>
-      The more animal products in your diet, the higher your daily greenhouse-gas emissions across CO₂, CH₄, and N₂O.
+      Plant-based diets see the lowest daily greenhouse-gas emissions across CO₂, CH₄, and N₂O.
       </Typography>
 
       <RadarChart

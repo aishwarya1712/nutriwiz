@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 
 import veganLandUse from '../assets/vegan_landuse.svg'
@@ -31,6 +31,11 @@ const itemVariants = {
   },
 }
 
+// if you increase more width and height it makes it harder to comapre
+// maybe just increase the width and not the height
+// unless yo uhave a view that super imposes them 
+// if there's some animation that super imposes them, putting the
+// make it 
 export default function LandUseSection() {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)
@@ -58,12 +63,12 @@ export default function LandUseSection() {
     >
       <Stack spacing={2} alignItems="center">
         <Typography fontSize={45} fontWeight="bold">
-          How much land do we use to feed one person?
+          How much land is used daily to feed one person?
         </Typography>
 
         <Stack spacing={5}>
           <motion.div variants={itemVariants}>
-            <Stack direction="row" spacing={10} alignItems="center">
+            <Stack direction="row" spacing={5} alignItems="center">
               <img
                 src={veganLandUse}
                 style={{ height: 100, width: 100, borderRadius: 20 }}
@@ -80,7 +85,7 @@ export default function LandUseSection() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Stack direction="row" spacing={10} alignItems="center">
+            <Stack direction="row" spacing={5} alignItems="center">
               <img
                 src={vegetarianLandUse}
                 style={{ height: 100, width: 150, borderRadius: 20 }}
@@ -92,7 +97,7 @@ export default function LandUseSection() {
                 <Typography fontSize={16}>
                 {landUseData.Vegetarian} m²/day
                 </Typography>
-                <Typography fontSize={16} fontWeight="bold" color="#5cb87e">
+                <Typography fontSize={16} fontWeight="bold" color="#d1894b">
                   Needs 1.5x more land
                 </Typography>
 
@@ -102,10 +107,10 @@ export default function LandUseSection() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Stack direction="row" spacing={10} alignItems="center">
+            <Stack direction="row" spacing={5} alignItems="center">
               <img
                 src={meatLandUse}
-                style={{ height: 200, width: 200, borderRadius: 20 }}
+                style={{ height: 100, width: 400, borderRadius: 20 }}
               />
               <Stack>
                 <Typography fontSize={32} fontWeight="bold">
@@ -114,8 +119,12 @@ export default function LandUseSection() {
                 <Typography fontSize={16}>
                 {landUseData['Meat Eater']} m²/day
                 </Typography>
-                <Typography fontSize={16} fontWeight="bold" color="#f66277">
-                  Now we need 4x more land!
+                <Typography fontWeight="bold" color="#df264e">
+                  Now we need&nbsp;
+                  <Box component="span" sx={{ fontSize: '30px' }}>
+                    4x
+                  </Box>
+                  &nbsp;more land!
                 </Typography>
               </Stack>
             </Stack>

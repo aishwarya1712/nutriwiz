@@ -20,6 +20,18 @@ const cupVariants = {
   show:   { scale: 1, opacity: 1, transition: { duration: 0.1 } }
 }
 
+// isotype - indicate that 
+// lets say each coffee cup reprsents 
+// add texts that explains how many one represents, or lay it out in a different way 
+// to communicate volume, instead of adding more when the screen is bigger, jsut resize
+// if we have 45 coffee cups, it would be a 5 by 9 row
+// always have 5 by 9
+// but the size of the coffee cups would change based on the screen size 
+// it should be an isotype
+// if you dont want to connect it to a number - have some animation that keeps adding 
+// ifm its emotions you want to evoke - make it look less like isotype, make it grow in size so its coming at the user
+// isotype
+// (in 12 oz) - do an asterisk and mention it somewhere so its clear that hte math is accurate.
 export default function CoffeeCupSection() {
   const [cupCount, setCupCount] = useState(0)
   const [inView, setInView]     = useState(false)

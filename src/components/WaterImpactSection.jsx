@@ -1,9 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Box, Typography, IconButton
 } from '@mui/material';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
-import SyncIcon from '@mui/icons-material/Sync';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import { motion, useAnimation } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
@@ -11,12 +13,27 @@ const TRUE_GAL = 400;
 const TANK_H = 300;
 const TANK_W = 140;
 
-export default function FancyWaterImpactSection({ onNext }) {
+export default function WaterImpactSection({ onNext }) {
   const [filling, setFilling] = useState(false);
   const [gallons, setGallons] = useState(0);
   const [done, setDone] = useState(false);
+  const [guess, setGuess] = useState(null)
   const controls = useAnimation();
   const intervalRef = useRef(null);
+
+  useEffect(() => {
+    if(!filling){
+      if(gallons > 0){
+        if(gallons === TRUE_GAL){
+          setGuess(true)
+        } else {
+          setGuess(false)
+        }
+      }
+    } else {
+      setGuess(null)
+    }
+  }, [filling])
 
   const toggleFill = async () => {
     if (done) return onNext?.();
@@ -67,12 +84,13 @@ export default function FancyWaterImpactSection({ onNext }) {
       }}
     >
       <Typography variant="h4" fontWeight={700} sx={{fontSize: 50}}>
-       Can you guess the amount of virtual water it takes to make<br/>&nbsp;
+       Can you guess the amount of virtual water it takes to make&nbsp;
         <Box component="span">one beef patty?</Box>
       </Typography>
 
-      <Typography variant="h3">
-        {gallons}&nbsp;gal
+      <Typography variant="h3">{gallons}&nbsp;gal</Typography>
+      <Typography variant="subtitle1" color={guess === null ? "textSecondary" : (guess === false ? "tomato": "green")}>
+        {guess === null ? "Make a guess!" : (guess === false ? "Your guess is incorrect - try again!": "Your guess is correct!")}
       </Typography>
 
       {/* ------- tank graphic ------- */}
@@ -82,7 +100,7 @@ export default function FancyWaterImpactSection({ onNext }) {
           sx={{
             position: 'absolute',
             inset: 0,
-            border: '4px solid #4ac3af55',
+            border: guess === null ? "4px solid #4ac3af55" : (guess === false ? "4px solid tomato": "4px solid #4ac3af55"),
             borderRadius: TANK_W / 2,
             background: 'rgba(255,255,255,0.05)',
             backdropFilter: 'blur(3px)',
@@ -97,7 +115,8 @@ export default function FancyWaterImpactSection({ onNext }) {
             width: '100%',
             height: TANK_H,
             overflow: 'hidden',
-            borderRadius: `${TANK_W / 2}px ${TANK_W / 2}px 0 0`,
+            borderRadius: `${TANK_W / 2}px`,
+            border: guess === null ? "" : (guess === false ? "4px solid tomato": "")
           }}
         >
           {/* blue rect slides up */}
@@ -170,13 +189,16 @@ export default function FancyWaterImpactSection({ onNext }) {
           '&:hover': { bgcolor: '#4ac3af22' },
         }}
       >
-        <motion.div animate={controls}>
-          <SyncIcon sx={{ fontSize: 36, color: '#4ac3af' }} />
-        </motion.div>
+        {/* <motion.div animate={controls}> */}
+          {filling
+    ? <PauseCircleFilledIcon sx={{ color: '#4ac3af', fontSize: 36 }} />
+    : <PlayCircleFilledIcon  sx={{ color: '#4ac3af', fontSize: 36 }} />
+  }
+        {/* </motion.div> */}
       </IconButton>
       <Typography variant="body2">
-        Turn the knob to&nbsp;
-        {done ? 'continue ↓' : filling ? 'pause' : 'start'}&nbsp;the flow
+        Click the icon to&nbsp;
+        {done ? 'continue ↓' : filling ? 'pause' : 'start'}&nbsp;the flow of water
       </Typography>
 
 
@@ -202,6 +224,7 @@ export default function FancyWaterImpactSection({ onNext }) {
           ⌄
         </motion.div>
       )}
+      
     </Box>
   );
 }

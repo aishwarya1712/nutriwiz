@@ -10,6 +10,29 @@ import LandUseSection from './components/LandUseSection';
 import EmissionsRadarChart from './components/Emissions';
 import FlashCardCarousel from './components/FlashCardCarousel';
 
+// add more icons and pictures
+// rice beans hummus - use pictures or icons.
+// make it more visual
+// more data, where data is shown with charts, or it can be more narrative
+// make it more convincing and engaging with different approach: 1) add more data so thigns can be compared, or 2) add more narrative by adding more visual elements
+// mmake sure to add instructions for flipping
+// can design the information in the style of the infographic - just add more styling
+// use more visual imagery and data
+// approach it in a similar way for the expensive
+// make the cards a little bigger - even if you just have two 
+// then you can have them flippable indivodually
+// clearly communicate 
+// flip automativally after X seconds
+// if you only have two 
+// jsut two but dive deep
+// ehave two cards indivodia;;y flippable side-by-side, very visual, numbers emphasized
+// its lacking some depth at the moment.
+// can you dive deep into any one specific thing?
+// focus on tying everything together 
+
+// recommendations = starting small => make it interactive
+// slider = one day to seven days => based on then user's interaction => 
+// just one day a week for a year => do the math => visualize the impact on emissions/land and health
 const cards = [
   { front: 
     <Typography align="center" variant="h4" fontWeight={"bold"}>Think plant-based diets lack complete protein?</Typography>, 

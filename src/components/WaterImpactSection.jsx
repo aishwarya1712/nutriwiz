@@ -125,14 +125,6 @@ export default function WaterImpactSection({ onNext }) {
             initial={false}
             transition={{ ease: 'linear', duration: 0.5 }}
           />
-          <motion.img
-            src="/wave.svg"
-            alt=""
-            style={{ position: 'absolute', bottom: 0, width: '100%' }}
-            animate={{ y: waveY - 10 }}
-            initial={false}
-            transition={{ ease: 'linear', duration: 0.5 }}
-          />
         </motion.div>
 
         {/* bubbles */}

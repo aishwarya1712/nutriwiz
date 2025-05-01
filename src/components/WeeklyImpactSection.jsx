@@ -23,9 +23,9 @@ const meatDaily = { land: 16.78, CO2: 5.61, CH4: 45.09, N2O: 1.88 }
 
 const unitLabels = {
   'Land use': 'm²/yr',
-  'CO₂': 'kg/yr',
-  'CH₄': 'g/yr',
-  'N₂O': 'g/yr',
+  'CO2': 'kg/yr',
+  'CH4': 'g/yr',
+  'N2O': 'g/yr',
 }
 
 export default function WeeklyImpactSection() {
@@ -59,10 +59,10 @@ export default function WeeklyImpactSection() {
     ((baseline[metric] - scenario[metric]) / baseline[metric]) * 100
 
   const data = [
-    { metric: 'Land use', baseline: baseline.land, you: scenario.land },
-    { metric: 'CO₂', baseline: baseline.CO2, you: scenario.CO2 },
-    { metric: 'CH₄', baseline: baseline.CH4, you: scenario.CH4 },
-    { metric: 'N₂O', baseline: baseline.N2O, you: scenario.N2O },
+    { metric: 'Land use', baseline: baseline.land, you: scenario.land, unit: unitLabels['Land use'] },
+    { metric: 'CO2', baseline: baseline.CO2, you: scenario.CO2, unit: unitLabels['CO2'] },
+    { metric: 'CH4', baseline: baseline.CH4, you: scenario.CH4, unit: unitLabels['CH4'] },
+    { metric: 'N2O', baseline: baseline.N2O, you: scenario.N2O, unit: unitLabels['N2O'] },
   ]
 
   const renderLabel = ({ x, y, width, value }) => {
@@ -175,11 +175,13 @@ export default function WeeklyImpactSection() {
             <YAxis hide />
 
             <Tooltip
-              formatter={(val, _, entry) =>
-                `${val.toLocaleString(undefined, {
-                  maximumFractionDigits: 0,
-                })} ${entry.payload.unit}`
-              }
+              formatter={(val, _, entry) => {
+                   const formatted = val.toLocaleString(undefined, {
+                      maximumFractionDigits: 0,
+                    })
+                    // entry.payload.unit is now defined
+                    return `${formatted} ${entry.payload.unit}`
+                  }}
             />
 
             <Legend verticalAlign="top" />

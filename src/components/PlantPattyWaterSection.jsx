@@ -2,14 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Box, Typography, Stack } from '@mui/material'
 import { motion } from 'framer-motion'
 
-// can go horizontal 
-// or make it bigger/longer 
-// it should be 1/100ths - the math should check out, make it take up more vertical space.
-// to be even more creative - for the same amoint of water, you can make 100 plant patties
-// have a separate view in addition to this, a toggle, that shows 100 plantpatties versus one beef patty
-// that will communicate the data in a different way
-// i can eat 100 plant patties instead of one beef patty to have the same environmental impact
-// or just add text that says that
+
 export default function PlantPattyWaterSection() {
   const ref    = useRef(null)
   const [inView, setInView] = useState(false)

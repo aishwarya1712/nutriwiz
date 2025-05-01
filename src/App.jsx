@@ -9,6 +9,7 @@ import heart from './assets/Capa_2.svg';
 import LandUseSection from './components/LandUseSection';
 import EmissionsRadarChart from './components/Emissions';
 import FlashCardCarousel from './components/FlashCardCarousel';
+import BurgerComparison from './components/BurgerComparison';
 
 // add more icons and pictures
 // rice beans hummus - use pictures or icons.
@@ -93,7 +94,7 @@ function App() {
           <img src={heart} alt="Heart"/>
           <Typography sx={{ fontWeight: 'bold', fontSize: 107 }}>
             nutri
-            <Box component="span" sx={{ color: '#E95322' }}>
+            <Box component="span" sx={{ color: '#357960' }}>
               wiz
             </Box>
           </Typography>
@@ -138,6 +139,10 @@ function App() {
 
       <Box className="snap-section">
         <PlantPattyWaterSection />
+      </Box>
+
+      <Box className="snap-section">
+        <BurgerComparison />
       </Box>
 
       <Box className="snap-section">

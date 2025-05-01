@@ -35,7 +35,7 @@ const groups = [
     colors: ['#2e7d32', '#66bb6a'],
   },
   {
-    title:  'Fish-Eaters',
+    title:  'Pescatarians (Fish-eaters)',
     series: [
       { label: 'Fish-eaters', data: dietData.fish, fillArea: true },
     ],

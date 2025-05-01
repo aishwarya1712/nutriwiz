@@ -1,9 +1,21 @@
 #root {
-  background-color: #F3E9B5;
+  background-color: #eaf4ea;
   /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center; */
 }
+/* #c5d893ff */
+/* bcd5b0 */
 
 
+#root {
+    /* a gentle, multi-stop green gradient */
+    /* background: linear-gradient(
+       160deg,
+      #f7fcf5 0%,
+      #e3f9e5 35%, 
+      #c1eec2 70%,
+      #8ecda2 100%
+    );*/
+}

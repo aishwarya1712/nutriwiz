@@ -3,7 +3,6 @@ import {
   Box, Typography, IconButton
 } from '@mui/material';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
-import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import { motion, useAnimation } from 'framer-motion';

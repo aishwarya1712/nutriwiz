@@ -3,118 +3,110 @@ import { Box, Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 import coffeeImg from '../assets/coffee.png'
 
-const cupSize = 80
-const gap     = 8 
+export default function CoffeeCupSection() {
+  const rows = 5
+  const cols = 9
+  const totalCups = rows * cols
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.03
+  const headerRef = useRef(null)
+  const footerRef = useRef(null)
+  const [availableH, setAvailableH] = useState(0)
+  const [cupSize, setCupSize]     = useState(0)
+
+  useEffect(() => {
+    function updateLayout() {
+      const headerH = headerRef.current?.clientHeight || 0
+      const footerH = footerRef.current?.clientHeight || 0
+      const availH  = window.innerHeight - headerH - footerH
+      const availW  = window.innerWidth
+      const sizeH   = availH / rows
+      const sizeW   = availW / cols
+      const size    = Math.floor(Math.min(sizeH, sizeW))
+
+      setAvailableH(availH)
+      setCupSize(size)
+    }
+
+    updateLayout()
+    window.addEventListener('resize', updateLayout)
+    return () => window.removeEventListener('resize', updateLayout)
+  }, [])
+
+  // Framer Motion variants
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.05
+      }
     }
   }
-}
-
-const cupVariants = {
-  hidden: { scale: 0, opacity: 0 },
-  show:   { scale: 1, opacity: 1, transition: { duration: 0.1 } }
-}
-
-// isotype - indicate that 
-// lets say each coffee cup reprsents 
-// add texts that explains how many one represents, or lay it out in a different way 
-// to communicate volume, instead of adding more when the screen is bigger, jsut resize
-// if we have 45 coffee cups, it would be a 5 by 9 row
-// always have 5 by 9
-// but the size of the coffee cups would change based on the screen size 
-// it should be an isotype
-// if you dont want to connect it to a number - have some animation that keeps adding 
-// ifm its emotions you want to evoke - make it look less like isotype, make it grow in size so its coming at the user
-// isotype
-// (in 12 oz) - do an asterisk and mention it somewhere so its clear that hte math is accurate.
-export default function CoffeeCupSection() {
-  const [cupCount, setCupCount] = useState(0)
-  const [inView, setInView]     = useState(false)
-  const containerRef            = useRef(null)
-
-  // recalc how many cups fit on resize
-  useEffect(() => {
-    function updateCount() {
-      const total = cupSize + gap
-      const cols  = Math.floor(window.innerWidth  / total)
-      const rows  = Math.floor(window.innerHeight / total)
-      setCupCount(cols * rows)
-    }
-    updateCount()
-    window.addEventListener('resize', updateCount)
-    return () => window.removeEventListener('resize', updateCount)
-  }, [])
-
-  // trigger when 50% of section is visible
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          obs.disconnect()
-        }
-      },
-      { threshold: 0.5 }
-    )
-    if (containerRef.current) obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
-
-  const cups = Array.from({ length: cupCount }, (_, i) => i)
+  const cupVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    show: { scale: 1, opacity: 1, transition: { duration: 0.2 } }
+  }
 
   return (
     <Box
-      ref={containerRef}
+      className="snap-section"
       sx={{
-        position: 'relative',
-        left: '50%',
-        marginLeft: '-100vw',
         width: '100vw',
         height: '100vh',
-        overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        pt: 4,
       }}
     >
-      <Typography variant="h4" gutterBottom fontWeight={"bold"}>
-        That's equivalent to the amount of coffee in 4544 cups!
-      </Typography>
+      {/* Header */}
+      <Box ref={headerRef} sx={{ p: 2, flexShrink: 0 }}>
+        <Typography variant="h4" fontWeight="bold">
+          400 gallons of water is equivalent to the amount of coffee in about 4500 cups
+        </Typography>
+      </Box>
 
+      {/* Animated Grid: Only starts when scrolled into view */}
       <Box
         component={motion.div}
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'show' : 'hidden'}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
         sx={{
-          flex: 1,
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: `repeat(auto-fill, ${cupSize}px)`,
-          justifyContent: 'start',
-          gap: `${gap}px`,
+          height: `${availableH}px`,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexShrink: 0,
         }}
       >
-        {cups.map((_, idx) => (
-          <Box
-            key={idx}
-            component={motion.img}
-            src={coffeeImg}
-            alt="Coffee Cup"
-            variants={cupVariants}
-            sx={{
-              width: `${cupSize}px`,
-              height: `${cupSize}px`,
-              display: 'block',
-            }}
-          />
-        ))}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${cols}, ${cupSize}px)`,
+            gridTemplateRows:    `repeat(${rows}, ${cupSize}px)`,
+          }}
+        >
+          {Array.from({ length: totalCups }).map((_, idx) => (
+            <Box
+              key={idx}
+              component={motion.img}
+              src={coffeeImg}
+              alt="Coffee Cup"
+              variants={cupVariants}
+              sx={{
+                width:  `${cupSize}px`,
+                height: `${cupSize}px`,
+                objectFit: 'contain',
+              }}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      {/* Footer */}
+      <Box ref={footerRef} sx={{ p: 2, flexShrink: 0, textAlign: 'center' }}>
+        <Typography variant="subtitle1">
+          *Each coffee icon represents ten 12-oz cups of coffee.
+        </Typography>
       </Box>
     </Box>
   )

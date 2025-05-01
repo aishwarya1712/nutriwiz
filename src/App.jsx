@@ -10,6 +10,7 @@ import LandUseSection from './components/LandUseSection';
 import EmissionsRadarChart from './components/Emissions';
 import FlashCardCarousel from './components/FlashCardCarousel';
 import BurgerComparison from './components/BurgerComparison';
+import WeeklyImpactSection from './components/WeeklyImpactSection';
 
 // add more icons and pictures
 // rice beans hummus - use pictures or icons.
@@ -193,6 +194,15 @@ function App() {
         height={350}
       /> */}
       <FlashCardCarousel cards={cards} cardWidth={550} cardHeight={400} />
+      </Box>
+
+        <Box className="snap-section">
+          <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
+            Ready to see the impact of going plant-based over the course of a year?
+          </Typography>
+        </Box>
+      <Box className="snap-section">
+        <WeeklyImpactSection />
       </Box>
 
       

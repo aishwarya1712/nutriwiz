@@ -9,6 +9,9 @@ import {
   useMediaQuery,
 } from '@mui/material'
 import { Unstable_RadarChart as RadarChart } from '@mui/x-charts/RadarChart'
+import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 const metrics = [
   { name: 'CO₂ (kg/d)', max: 8 },
@@ -17,19 +20,19 @@ const metrics = [
 ]
 
 const dietData = {
-  vegans:      [2.16,  4.39,  0.71],
+  vegans: [2.16,  4.39,  0.71],
   vegetarians: [3.33, 20.21,  0.98],
-  fish:        [3.81, 22.55,  1.09],
-  lowMeat:     [4.21, 28.99,  1.29],
-  medMeat:     [5.34, 40.88,  1.73],
-  highMeat:    [7.28, 65.40,  2.62],
+  fish: [3.81, 22.55,  1.09],
+  lowMeat: [4.21, 28.99,  1.29],
+  medMeat: [5.34, 40.88,  1.73],
+  highMeat: [7.28, 65.40,  2.62],
 }
 
 const groups = [
   {
     title:  'Vegan & Vegetarian',
     series: [
-      { label: 'Vegans',      data: dietData.vegans,      fillArea: true },
+      { label: 'Vegans', data: dietData.vegans, fillArea: true },
       { label: 'Vegetarians', data: dietData.vegetarians, fillArea: true },
     ],
     colors: ['#2e7d32', '#66bb6a'],
@@ -44,18 +47,18 @@ const groups = [
   {
     title:  'Meat-Eaters',
     series: [
-      { label: 'Low meat-eaters',    data: dietData.lowMeat,  fillArea: true },
-      { label: 'Medium meat-eaters', data: dietData.medMeat,  fillArea: true },
-      { label: 'High meat-eaters',   data: dietData.highMeat, fillArea: true },
+      { label: 'Low meat-eaters', data: dietData.lowMeat, fillArea: true },
+      { label: 'Medium meat-eaters', data: dietData.medMeat, fillArea: true },
+      { label: 'High meat-eaters', data: dietData.highMeat, fillArea: true },
     ],
     colors: ['#ef5350', '#e53935', '#b71c1c'],
   },
 ]
 
 export default function GroupedRadarCharts() {
-  const theme   = useTheme()
-  const isSmUp  = useMediaQuery(theme.breakpoints.up('sm'))
-  const isMdUp  = useMediaQuery(theme.breakpoints.up('md'))
+  const theme = useTheme()
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'))
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'))
 
   const chartHeight = isSmUp ? 300 : 240
   const titleVariant = isMdUp ? 'h4' : isSmUp ? 'h5' : 'h6'
@@ -64,12 +67,12 @@ export default function GroupedRadarCharts() {
     <Box
       className="snap-section"
       sx={{
-        display:       'flex',
+        display: 'flex',
         flexDirection: 'column',
-        alignItems:    'center',
-        py:            { xs: 3, sm: 4 },
-        px:            { xs: 2, md: 4 },
-        boxSizing:     'border-box',
+        alignItems: 'center',
+        py: { xs: 3, sm: 4 },
+        px: { xs: 2, md: 4 },
+        boxSizing: 'border-box',
       }}
     >
       <Typography
@@ -83,10 +86,10 @@ export default function GroupedRadarCharts() {
 
       <Paper
         sx={{
-          p:        2,
-          width:    '100%',
+          p: 2,
+          width: '100%',
           maxWidth: 1200,
-          boxSizing:'border-box',
+          boxSizing: 'border-box',
         }}
         elevation={2}
       >
@@ -114,9 +117,9 @@ export default function GroupedRadarCharts() {
                 highlight="series"
                 slotProps={{
                   legend: {
-                    position:  { vertical: 'top', horizontal: 'center' },
+                    position: { vertical: 'top', horizontal: 'center' },
                     direction: 'row',
-                    sx:        { mb: 1 },
+                    sx: { mb: 1 },
                   },
                 }}
               />
@@ -143,39 +146,87 @@ export default function GroupedRadarCharts() {
         </Typography>
       </Paper>
 
+
       <Stack
         justifyContent="center"
         direction={{ xs: 'column', md: 'row' }}
         spacing={2}
         sx={{ width: '100%', maxWidth: 1200, mt: 4 }}
       >
-        <Paper sx={{ p: 2, flex: 1, background: "transparent", border: "1px solid #E95322", borderRadius: "10px" }} elevation={0}>
-          <Typography variant="h6" fontWeight="bold" gutterBottom>
-            Vegans
-          </Typography>
-          <Typography>
-            Emit the lowest GHGs: only 2.16 kg CO₂, 4.39 g CH₄, and 0.71 g N₂O per day.
+        <Paper
+          elevation={0}
+          sx={{
+            p: 3,
+            flex: 1,
+            border: '1px solid #357960',
+            borderRadius: '10px',
+            background: 'rgba(53, 121, 96, 0.05)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1.5,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <EnergySavingsLeafIcon sx={{ color: '#357960' }} />
+            <Typography variant="h6" fontWeight="bold">
+              Vegans
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            Emit the lowest amount of greenhouse gases.
           </Typography>
         </Paper>
 
-        <Paper sx={{ p: 2, flex: 1, background: "transparent", border: "1px solid #E95322", borderRadius: "10px" }} elevation={0}>
-          <Typography variant="h6" fontWeight="bold" gutterBottom>
-            High Meat-Eaters
-          </Typography>
-          <Typography>
-            Produce up to 7.28 kg CO₂ and 65.40 g CH₄ daily—over 3x more methane than vegans.
-          </Typography>
-        </Paper>
+  <Paper
+    elevation={0}
+    sx={{
+      p: 3,
+      flex: 1,
+      border: '1px solid #d32f2f',
+      borderRadius: '10px',
+      background: 'rgba(211, 47, 47, 0.05)',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 1.5,
+    }}
+  >
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+      <FastfoodIcon sx={{ color: '#d32f2f' }} />
+      <Typography variant="h6" fontWeight="bold">
+        High Meat-Eaters
+      </Typography>
+    </Box>
+    <Typography variant="body2">
+      Produce up to <strong>3x</strong> more greenhouse gases than vegans.
+    </Typography>
+  </Paper>
 
-        <Paper sx={{ p: 2, flex: 1, background: "transparent", border: "1px solid #E95322", borderRadius: "10px" }} elevation={0}>
-          <Typography variant="h6" fontWeight="bold" gutterBottom>
-            Methane Spotlight
-          </Typography>
-          <Typography>
-            CH₄ is a powerful short-lived gas; high-meat diets emit ~15x more CH₄ than vegan diets.
-          </Typography>
-        </Paper>
-      </Stack>
+  <Paper
+    elevation={0}
+    sx={{
+      p: 3,
+      flex: 1,
+      border: '1px solid #f9a825',
+      borderRadius: '10px',
+      background: 'rgba(249, 168, 37, 0.05)',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 1.5,
+    }}
+  >
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+      <LightbulbIcon sx={{ color: '#f9a825' }} />
+      <Typography variant="h6" fontWeight="bold">
+        Why This Matters
+      </Typography>
+    </Box>
+    <Typography variant="body2">
+      Food production drives ~26 % of global emissions. Swapping even a few meals
+      for plant-based options trims your climate footprint and eases demand for
+      resource-intensive livestock.
+    </Typography>
+  </Paper>
+</Stack>
     </Box>
   )
 }

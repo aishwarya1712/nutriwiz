@@ -43,7 +43,7 @@ export default function PlantPattyWaterSection() {
       }}
     >
       <Typography variant="h4" gutterBottom fontWeight={"bold"}>
-        In comparison, one plant-based patty only consumes 4 gallons of water
+        In comparison, one plant-based patty only consumes 4 gallons of virtual water
       </Typography>
 
       {/* Chart */}

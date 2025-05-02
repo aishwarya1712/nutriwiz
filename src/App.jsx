@@ -11,6 +11,7 @@ import EmissionsRadarChart from './components/Emissions';
 import FlashCardCarousel from './components/FlashCardCarousel';
 import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
+import VirtualWaterSection from './components/VirtualWaterSection';
 
 // add more icons and pictures
 // rice beans hummus - use pictures or icons.
@@ -119,17 +120,10 @@ function App() {
             </Typography>
       </Box>
 
-      {/* <Box className="snap-section" sx={{ position: 'relative' }}>
-        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
-          Did you know it takes <span style={{ color: '#4ac3af' }}>460 gallons of water</span>
-          &nbsp;to make a single beef patty?
-        </Typography>
-        <Box sx={{ position: 'absolute', bottom: 32, right: 32 }}>
-        <Button sx= {{ p: 1, width: "100px", backgroundColor: "#4ac3af", borderRadius: "30px"}} variant="contained" onClick={() => setShowMore(true)}>
-            Show more
-          </Button>
-          </Box>
-      </Box> */}
+      <Box className="snap-section">
+        <VirtualWaterSection />
+      </Box>
+
       <Box className="snap-section">
         <WaterImpactSection onNext={snapDown} />
       </Box>
@@ -160,7 +154,7 @@ function App() {
           <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
             It doesn't end there.</Typography>
             <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-              Plant based food is much kinder to the planet in terms of emissions.
+              Plant-based foods generate significantly lower greenhouse gas emissions, making them far gentler on the planet.
             </Typography>
       </Box>
 
@@ -175,28 +169,14 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-      {/* <FlashCard
-        front={<Typography align="center" variant="h4">Think plant-based diets lack complete protein?</Typography>}
-        back={
-          <Stack>
-          <Typography align="center">
-            Think again!
-          </Typography>
-          <Typography align="center">
-            Plant-based foods contain all 20 amino acids, including the 9 indispensable amino acids
-          </Typography>
-          <Typography align="center">
-            Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC6893534/
-          </Typography>
-          </Stack>
-        }
-        width={500}
-        height={350}
-      /> */}
+
       <FlashCardCarousel cards={cards} cardWidth={550} cardHeight={400} />
       </Box>
 
         <Box className="snap-section">
+          <Typography sx={{ fontWeight: 'bold', fontSize: 40, px: 3, textAlign: 'center' }}>
+            Every day you eat plant-based adds up to real change.
+          </Typography>
           <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
             Ready to see the impact of going plant-based over the course of a year?
           </Typography>
@@ -205,16 +185,6 @@ function App() {
         <WeeklyImpactSection />
       </Box>
 
-      
-
-      {/* Section 4 */}
-      {showMore && (
-        <Box className="snap-section" ref={section3Ref}>
-          <Typography sx={{ fontWeight: 'bold', fontSize: 48 }} variant="h4">
-            Here's how plant-powered meals can shrink your water footprint
-          </Typography>
-        </Box>
-      )}
     </Box>
     </>
   )

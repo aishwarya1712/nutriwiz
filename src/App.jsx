@@ -12,6 +12,19 @@ import FlashCardCarousel from './components/FlashCardCarousel';
 import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
+import FlashCard from './components/FlashCard';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  // Stack
+} from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+
+// https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
 // add more icons and pictures
 // rice beans hummus - use pictures or icons.
@@ -37,42 +50,197 @@ import VirtualWaterSection from './components/VirtualWaterSection';
 // slider = one day to seven days => based on then user's interaction => 
 // just one day a week for a year => do the math => visualize the impact on emissions/land and health
 const cards = [
-  { front: 
-    <Typography align="center" variant="h4" fontWeight={"bold"}>Think plant-based diets lack complete protein?</Typography>, 
-    back: <Stack spacing={2}>
-    <Typography fontSize={24} align="center" fontWeight={"bold"}>
-      Plant-based foods contain all 20 amino acids, including the 9 essential amino acids.
-    </Typography>
-    <Typography>
-      A well-balanced, plant-based diet will provide adequate amounts of essential amino acids and prevent protein deficiency.
-      Essential amino acids can be obtained by eating certain combinations of plant-based foods.
-      Examples include brown rice with beans, and hummus with whole wheat pita. 
-    </Typography>
-    <Typography variant="subtitle1" align="center" color="textSecondary" fontSize={12}>
-      Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC6893534/
-      https://pmc.ncbi.nlm.nih.gov/articles/PMC3662288/
-    </Typography>
-    </Stack>},
-  { front: <Typography align="center" variant="h4" fontWeight={"bold"}>Think plant-based diets are expensive?</Typography>, 
-  back: <Stack spacing={2}>
-    <Typography fontSize={24} align="center" fontWeight={"bold"}>
-      Plant-based consumption is associated with lower food expenditures compared to meat-based consumption.
-    </Typography>
-    <Typography>
-      Plant-based consumers do not spend more but in fact less than any consumer assessed. It is healthier, more sustainable and cheaper.
-    </Typography>
-  </Stack> },
-  {
-    front: <Typography align="center" variant="h4" fontWeight={"bold"}>Another myth about plant-based food</Typography>,
-    back: <Stack spacing={2}>
-    <Typography fontSize={24} align="center" fontWeight={"bold"}>
-      Address the myth
-    </Typography>
-    <Typography>
-      Some description
-    </Typography>
+  { front: (
+    <>
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            p: 2,
+          }}
+        >
+          <Typography align="center" variant="h4" fontWeight="bold">
+            "But plant-based diets lack protein"
+          </Typography>
+        </Box>
+        <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", width: "100%", height: "50px"}}>
+          <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
+        </Box>
+    </>
+  ), 
+    back: ( <Box
+      sx={{
+        height: '100%',
+        p: 3,
+        bgcolor: '#f0fdfa',       // very light teal background
+        borderRadius: 2,
+        overflowY: 'auto'
+      }}
+    >
+      <Stack spacing={4}>
+        {/* Myth/Fact #1 */}
+        <Stack direction="row" spacing={2} alignItems="flex-start">
+          <Box
+            component="img"
+            src="https://images.unsplash.com/photo-1623509636544-4cfcb1195b40?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Plant protein sources"
+            sx={{
+              width: 200,
+              height: 200,
+              objectFit: 'cover',
+              borderRadius: 1
+            }}
+          />
+          <Box>
+            <Typography fontWeight="bold" gutterBottom>
+              It's possible to get enough protein on a plant-based diet
+            </Typography>
+            <Typography variant="body2">
+              The US recommended daily allowance for protein is just 0.8 grams per kg of body weight.
+              Contrary to the hype that everyone needs more protein, most people in the U.S. meet or exceed their needs. 
+              Protein appears in nuts, beans, legumes, soy, whole grains—and even greens, potatoes, mushrooms and squash!. 
+              Fruits contain small amounts, too.
+              A varied whole-food plant diet easily covers your protein needs.
+              Source: https://www.dietaryguidelines.gov/resources/2020-2025-dietary-guidelines-online-materials
+            </Typography>
+          </Box>
+        </Stack>
+
+        {/* Myth/Fact #2 */}
+        <Stack direction="row" spacing={2} alignItems="flex-start">
+          <Box
+            component="img"
+            src="https://static01.nyt.com/images/2022/09/01/sports/01streeter-sot-4/01streeter-sot-4-mediumSquareAt3X.jpg"
+            alt="Plant-based athletes"
+            sx={{
+              width: 150,
+              height: 200,
+              objectFit: 'cover',
+              borderRadius: 1
+            }}
+          />
+          <Box>
+            <Typography fontWeight="bold" gutterBottom>
+              Plant protein is effective, even for athletes
+            </Typography>
+            <Typography variant="body2">
+              Countless plant-based bodybuilders and athletes (Serena and Venus Williams, Lewis Hamilton, Tom Brady, Kendrick Farris) thrive on plant protein.  
+              Reviews comparing soy vs. animal supplements show equivalent strength gains—so plants build muscle just fine.
+            </Typography>
+          </Box>
+        </Stack>
+        
+        {/* (optional) Sources at bottom */}
+        <Typography
+          variant="caption"
+          color="textSecondary"
+          align="center"
+        >
+          Sources: PMC 6893534, PMC 3662288
+        </Typography>
+      </Stack>
+    </Box>)},
+  { front:  <>
+    <Box
+      sx={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+      }}
+    >
+      <Typography align="center" variant="h4" fontWeight="bold">
+        "But plant-based diets are so expensive"
+      </Typography>
+    </Box>
+    <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", width: "100%", height: "50px"}}>
+      <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
+    </Box>
+</>, 
+  back: ( <Box
+    sx={{
+      height: '100%',
+      p: 3,
+      bgcolor: '#f0fdfa',       // very light teal background
+      borderRadius: 2,
+      overflowY: 'auto'
+    }}
+  >
+    <Stack spacing={4}>
+      {/* Myth/Fact #1 */}
+      <Stack direction="row" spacing={2} alignItems="flex-start">
+        <Box
+          component="img"
+          src="https://images.unsplash.com/photo-1656049471454-ff3c59812741?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Plant protein sources"
+          sx={{
+            width: 200,
+            height: 200,
+            objectFit: 'cover',
+            borderRadius: 1
+          }}
+        />
+        <Box>
+          <Typography fontWeight="bold" gutterBottom>
+            Plant-based diet can actually save you money 
+          </Typography>
+          <Typography variant="body2">
+          A 2015 study from the Journal of Hunger & Environmental Nutrition suggests that a plant-based diet could lead to savings of nearly $750 a year for an average cost of a 2,000-calorie diet following the federal MyPlate nutrition guidelines. 
+
+          Plant-based foods such as beans, grains, sweet potatoes, lentils, and fruits are found in most local
+          supermarkets at relatively low cost and covered under SNAP benefits (Supplemental Nutrition Assistance
+          Program). 
+          </Typography>
+        </Box>
+      </Stack>
+
+      {/* Myth/Fact #2 */}
+      <Stack direction="row" spacing={2} alignItems="flex-start">
+        <Box
+          component="img"
+          src="https://thumbs.dreamstime.com/b/saving-money-cartoon-icon-cash-bills-vector-illustration-graphic-design-143356787.jpg"
+          alt="Plant-based athletes"
+          sx={{
+            width: 135,
+            height: 200,
+            objectFit: 'cover',
+            borderRadius: 1
+          }}
+        />
+        <Box>
+          <Typography fontWeight="bold" gutterBottom>
+          Eating Plant-Based Costs 33% Less
+          </Typography>
+          <Typography variant="body2">
+            Whole-food vegan proteins like dried beans cost as little as $1.50/lb compared to $4-$20/lb for meats, and even processed plant alternatives (e.g., tofu, tempeh) deliver comparable protein at lower cost, while Oxford research suggests that fully vegan eating can cut grocery bills by up to 33% (flexitarian -14%, pescatarian +2%) in high-income countries 
+          </Typography>
+        </Box>
+      </Stack>
+      
+      {/* (optional) Sources at bottom */}
+      <Typography
+        variant="caption"
+        color="textSecondary"
+        align="center"
+      >
+        Sources: PMC 6893534, PMC 3662288
+      </Typography>
     </Stack>
-  }
+  </Box>)},
+  // {
+  //   front: <Typography align="center" variant="h4" fontWeight={"bold"}>Another myth about plant-based food</Typography>,
+  //   back: <Stack spacing={2}>
+  //   <Typography fontSize={24} align="center" fontWeight={"bold"}>
+  //     Address the myth
+  //   </Typography>
+  //   <Typography>
+  //     Some description
+  //   </Typography>
+  //   </Stack>
+  // }
 ]
 
 function App() {
@@ -169,8 +337,13 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-
-      <FlashCardCarousel cards={cards} cardWidth={550} cardHeight={400} />
+        <Stack direction="row" spacing={2}>
+        {
+          cards.map((card, key) => {
+            return (<FlashCard key={key} front={card.front} back={card.back} height={600} width={700}/>)
+          })
+        }
+        </Stack>
       </Box>
 
         <Box className="snap-section">

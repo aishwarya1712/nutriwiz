@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Card } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 
 export default function FlashCard({
   front,
@@ -40,9 +40,11 @@ export default function FlashCard({
             inset: 0,
             backfaceVisibility: 'hidden',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
-            p: 2,
+            height: "100%"
+            // p: 2,
           }}
         >
           {front}
@@ -58,14 +60,13 @@ export default function FlashCard({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            p: 2,
+            p: 4,
           }}
         >
           {back}
         </Box>
       </Card>
 
-      
     </Box>
   );
 }

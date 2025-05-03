@@ -8,21 +8,10 @@ import PlantPattyWaterSection from './components/PlantPattyWaterSection';
 import heart from './assets/Capa_2.svg';
 import LandUseSection from './components/LandUseSection';
 import EmissionsRadarChart from './components/Emissions';
-import FlashCardCarousel from './components/FlashCardCarousel';
 import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
 import FlashCard from './components/FlashCard';
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  // Stack
-} from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
-import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
@@ -65,7 +54,7 @@ const cards = [
             "But plant-based diets lack protein"
           </Typography>
         </Box>
-        <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", width: "100%", height: "50px"}}>
+        <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", height: "50px"}}>
           <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
         </Box>
     </>
@@ -131,8 +120,7 @@ const cards = [
             </Typography>
           </Box>
         </Stack>
-        
-        {/* (optional) Sources at bottom */}
+
         <Typography
           variant="caption"
           color="textSecondary"
@@ -156,7 +144,7 @@ const cards = [
         "But plant-based diets are so expensive"
       </Typography>
     </Box>
-    <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", width: "100%", height: "50px"}}>
+    <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", height: "50px"}}>
       <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
     </Box>
 </>, 
@@ -229,18 +217,7 @@ const cards = [
         Sources: PMC 6893534, PMC 3662288
       </Typography>
     </Stack>
-  </Box>)},
-  // {
-  //   front: <Typography align="center" variant="h4" fontWeight={"bold"}>Another myth about plant-based food</Typography>,
-  //   back: <Stack spacing={2}>
-  //   <Typography fontSize={24} align="center" fontWeight={"bold"}>
-  //     Address the myth
-  //   </Typography>
-  //   <Typography>
-  //     Some description
-  //   </Typography>
-  //   </Stack>
-  // }
+  </Box>)}
 ]
 
 function App() {

@@ -32,13 +32,13 @@ function SquareCard({ icon, title, children }) {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
         {icon}
-        <Typography variant="subtitle1" fontWeight={700}>
+        <Typography fontSize={"20px"} fontWeight={700}>
           {title}
         </Typography>
       </Box>
       <Typography
         component="div"
-        variant="body2"
+        variant="body1"
         sx={{ overflowY: 'auto', pr: 1 }}
       >
         {children}
@@ -97,14 +97,13 @@ export default function VirtualWaterSection() {
       sx={{
         height: '100vh',
         scrollSnapAlign: 'start',
-        overflowY: 'auto',
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
       }}
     >
-      <Box sx={{ width: '100%', maxWidth: 1100, display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <Box sx={{ width: '100%', maxWidth: 1100, display: 'flex', flexDirection: 'column', gap: 4, p: 10 }}>
         {/* Header */}
         <Typography
           variant={isSmUp ? 'h4' : 'h5'}
@@ -121,8 +120,7 @@ export default function VirtualWaterSection() {
             gap: 3,
             gridTemplateColumns: {
               xs: 'repeat(auto-fill, minmax(160px, 1fr))',
-              sm: 'repeat(auto-fill, minmax(200px, 1fr))',
-              md: 'repeat(auto-fill, minmax(220px, 1fr))',
+              sm: 'repeat(3, 1fr)'
             },
           }}
         >

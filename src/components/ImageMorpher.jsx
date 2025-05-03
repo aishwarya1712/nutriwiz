@@ -6,9 +6,9 @@ import healthyImg from '../assets/healthy.png'
 import earthImg from '../assets/earth.png'
 
 export default function ImageMorpher() {
-  const [inView, setInView]     = useState(false)
-  const [flipped, setFlipped]   = useState(false)
-  const containerRef            = useRef(null)
+  const [inView, setInView] = useState(false)
+  const [flipped, setFlipped] = useState(false)
+  const containerRef = useRef(null)
 
   const size = 350
 

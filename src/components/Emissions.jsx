@@ -15,8 +15,8 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 const metrics = [
   { name: 'CO₂ (kg/d)', max: 8 },
-  { name: 'CH₄ (g/d)',   max: 70 },
-  { name: 'N₂O (g/d)',   max: 3 },
+  { name: 'CH₄ (g/d)', max: 70 },
+  { name: 'N₂O (g/d)', max: 3 },
 ]
 
 const dietData = {

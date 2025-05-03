@@ -29,7 +29,7 @@ const unitLabels = {
 }
 
 export default function WeeklyImpactSection() {
-  const [plantDays,     setPlantDays]  = useState(0)
+  const [plantDays, setPlantDays]  = useState(0)
   const [hasInteracted, setInteracted] = useState(false)
 
   const theme  = useTheme()
@@ -41,8 +41,8 @@ export default function WeeklyImpactSection() {
   }
 
   const weeksPerYear = 365 / 7
-  const daysPlant    = plantDays * weeksPerYear
-  const daysMeat     = (7 - plantDays) * weeksPerYear
+  const daysPlant = plantDays * weeksPerYear
+  const daysMeat = (7 - plantDays) * weeksPerYear
 
   const baseline = {
     land: meatDaily.land * 365,
@@ -62,9 +62,9 @@ export default function WeeklyImpactSection() {
 
   const data = [
     { metric: 'Land use', baseline: baseline.land, you: scenario.land, unit: unitLabels['Land use'] },
-    { metric: 'CO2',      baseline: baseline.CO2,  you: scenario.CO2,  unit: unitLabels.CO2          },
-    { metric: 'CH4',      baseline: baseline.CH4,  you: scenario.CH4,  unit: unitLabels.CH4          },
-    { metric: 'N2O',      baseline: baseline.N2O,  you: scenario.N2O,  unit: unitLabels.N2O          },
+    { metric: 'CO2', baseline: baseline.CO2,  you: scenario.CO2,  unit: unitLabels.CO2 },
+    { metric: 'CH4', baseline: baseline.CH4,  you: scenario.CH4,  unit: unitLabels.CH4 },
+    { metric: 'N2O', baseline: baseline.N2O,  you: scenario.N2O,  unit: unitLabels.N2O },
   ]
 
   const renderLabel = ({ x, y, width, value }) => (
@@ -93,12 +93,12 @@ export default function WeeklyImpactSection() {
         alignItems: 'center',
       }}
     >
-      <Typography fontSize={20} align="center" sx={{ maxWidth: 700, mb: 3 }} fontWeight={"bold"}>
+      <Typography fontSize={28} align="center" sx={{ maxWidth: 700, mb: 3 }} fontWeight={"bold"}>
         1.&nbsp;Roll the slider to pick your plant-based diet days per week.<br/>
       </Typography>
 
       <Box sx={{ width: '100%', maxWidth: 600, mb: 3 }}>
-        <Typography gutterBottom>
+        <Typography ontSize={20} gutterBottom>
           How many plant-based days per week? <strong>{plantDays}</strong>
         </Typography>
         <Slider
@@ -111,7 +111,7 @@ export default function WeeklyImpactSection() {
         />
       </Box>
 
-      <Typography fontSize={20} align="center" sx={{ maxWidth: 700, mb: 3 }}  fontWeight={"bold"}>
+      <Typography fontSize={28} align="center" sx={{ maxWidth: 900, mb: 3 }}  fontWeight={"bold"}>
         2.&nbsp;Compare how much land, CO₂, CH₄ &amp; N₂O you use, versus a 100 % meat diet.
       </Typography>
       <Paper
@@ -177,13 +177,13 @@ export default function WeeklyImpactSection() {
             <Bar
               dataKey="baseline"
               name="All meat-eater"
-              fill="#ef5350"
+              fill="#df264e"
               label={renderLabel}
             />
             <Bar
               dataKey="you"
               name={`${plantDays}/7 days a week plan`}
-              fill="#66bb6a"
+              fill="#357960"
               label={renderLabel}
             />
           </BarChart>

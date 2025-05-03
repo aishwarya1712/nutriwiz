@@ -82,7 +82,7 @@ export default function CoffeeCupSection() {
           sx={{
             display: 'grid',
             gridTemplateColumns: `repeat(${cols}, ${cupSize}px)`,
-            gridTemplateRows:    `repeat(${rows}, ${cupSize}px)`,
+            gridTemplateRows: `repeat(${rows}, ${cupSize}px)`,
           }}
         >
           {Array.from({ length: totalCups }).map((_, idx) => (
@@ -93,7 +93,7 @@ export default function CoffeeCupSection() {
               alt="Coffee Cup"
               variants={cupVariants}
               sx={{
-                width:  `${cupSize}px`,
+                width: `${cupSize}px`,
                 height: `${cupSize}px`,
                 objectFit: 'contain',
               }}

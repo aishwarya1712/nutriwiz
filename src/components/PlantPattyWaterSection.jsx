@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 
 export default function PlantPattyWaterSection() {
-  const ref    = useRef(null)
+  const ref = useRef(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
@@ -31,15 +31,15 @@ export default function PlantPattyWaterSection() {
     <Box
       ref={ref}
       sx={{
-        height:      '100vh',
-        width:       '100vw',
-        px:          4,
-        boxSizing:   'border-box',
-        display:     'flex',
-        flexDirection:'column',
-        alignItems:  'center',
-        justifyContent:'center',
-        textAlign:   'center',
+        height: '100vh',
+        width: '100vw',
+        px: 4,
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
       }}
     >
       <Typography variant="h4" gutterBottom fontWeight={"bold"}>

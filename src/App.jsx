@@ -286,9 +286,17 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-        <Typography sx={{ fontWeight: 'bold', fontSize: 45}}>
-          Plant-based food also has a smaller land footprint.
-        </Typography>
+        <Stack alignItems={"center"} justifyContent={"center"} sx={{ height: "80%"}}>
+          <Typography sx={{ fontWeight: 'bold', fontSize: 45, textAlign: "center", flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',}}>
+            Plant-based food also has a smaller land footprint*
+          </Typography>
+          <Typography variant={"subtitle1"} sx={{ color: "grey", fontSize: 20, textAlign: "center"}}>
+            * Land footprint refers to the land needed to grow crops, raise livestock, extract resources, or build infrastructure for a product throughout its lifecycle
+          </Typography>
+        </Stack>
       </Box>
 
       <Box className="snap-section">

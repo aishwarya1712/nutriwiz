@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import {
-  Box, Typography, IconButton
+  Box, Stack, Typography, IconButton
 } from '@mui/material';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
@@ -87,7 +87,27 @@ export default function WaterImpactSection({ onNext }) {
         <Box component="span">one beef patty?</Box>
       </Typography>
 
-      <Typography variant="h3">{gallons}&nbsp;gal</Typography>
+      <Stack sx={{width: "100%"}} direction="row" justifyContent={"center"} spacing={30} alignItems={"center"}>
+        <Stack direction="column" alignItems={"flex-start"}>
+          <Typography sx={{fontSize: 20, fontWeight: "bold"}}>Instructions</Typography>
+      <Typography sx={{fontSize: 20}}>
+        1. Click the play button to start filling the container
+      </Typography>
+      <Typography sx={{fontSize: 20}}>
+        2. Watch the container fill and gallon reading go up
+      </Typography>
+      <Typography sx={{fontSize: 20}}>
+        3. Click pause to make a guess
+      </Typography>
+      <Typography sx={{fontSize: 20}}>
+        4. Retry if your guess was incorrect 
+      </Typography>
+        
+    
+
+      </Stack>
+      <Stack alignItems={"center"} spacing={5}>
+      <Typography variant="h3">{gallons}&nbsp;gallons</Typography>
       <Typography variant="subtitle1" color={guess === null ? "textSecondary" : (guess === false ? "tomato": "green")}>
         {guess === null ? "Make a guess!" : (guess === false ? "Your guess is incorrect - try again!": "Your guess is correct!")}
       </Typography>
@@ -171,26 +191,27 @@ export default function WaterImpactSection({ onNext }) {
           <LunchDiningIcon sx={{ fontSize: 120 }} />
         </motion.div>
       </Box>
-
-      {/* ------- faucet knob controller ------- */}
-      <IconButton
+       {/* ------- faucet knob controller ------- */}
+       <IconButton
         onClick={toggleFill}
         sx={{
-          border: '2px solid #4ac3af',
-          '&:hover': { bgcolor: '#4ac3af22' },
+          width: "fit-content",
+          border: '2px solid #357960',
+          '&:hover': { bgcolor: '#35796022' },
         }}
       >
         {/* <motion.div animate={controls}> */}
           {filling
-    ? <PauseCircleFilledIcon sx={{ color: '#4ac3af', fontSize: 36 }} />
-    : <PlayCircleFilledIcon  sx={{ color: '#4ac3af', fontSize: 36 }} />
+    ? <PauseCircleFilledIcon sx={{ color: '#357960', fontSize: 36 }} />
+    : <PlayCircleFilledIcon  sx={{ color: '#357960', fontSize: 36 }} />
   }
         {/* </motion.div> */}
       </IconButton>
-      <Typography variant="body2">
-        Click the icon to&nbsp;
-        {done ? 'continue ↓' : filling ? 'pause' : 'start'}&nbsp;the flow of water
-      </Typography>
+      </Stack>
+      </Stack>
+
+   
+     
 
 
       {/* ------- scroll hint ------- */}

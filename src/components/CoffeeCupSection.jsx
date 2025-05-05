@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import coffeeImg from '../assets/coffee.png'
 
 export default function CoffeeCupSection() {
-  const rows = 5
-  const cols = 9
+  const rows = 8
+  const cols = 8
   const totalCups = rows * cols
 
   const headerRef = useRef(null)
@@ -59,7 +59,7 @@ export default function CoffeeCupSection() {
       {/* Header */}
       <Box ref={headerRef} sx={{ p: 2, flexShrink: 0 }}>
         <Typography variant="h4" fontWeight="bold">
-          400 gallons of water is equivalent to the amount of coffee in about 4500 cups
+        400 gallons can fill up 6,400 glasses of water.
         </Typography>
       </Box>
 
@@ -104,8 +104,8 @@ export default function CoffeeCupSection() {
 
       {/* Footer */}
       <Box ref={footerRef} sx={{ p: 2, flexShrink: 0, textAlign: 'center' }}>
-        <Typography variant="subtitle1">
-          *Each coffee icon represents ten 12-oz cups of coffee.
+        <Typography variant="subtitle1" sx={{fontWeight: "500"}}>
+          *Each icon represents ten 8-oz glassses of water.
         </Typography>
       </Box>
     </Box>

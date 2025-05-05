@@ -81,7 +81,8 @@ export default function GroupedRadarCharts() {
         fontWeight="bold"
         gutterBottom
       >
-        Plant-based diets are associated with the lowest release of major greenhouse gases — CO₂, CH₄, and N₂O.
+        Plant-based diets are associated with the lowest release of major greenhouse gases — 
+        <br/> CO₂ (Carbon Dioxide), CH₄ (Methane), and N₂O (Nitrous Oxide).
       </Typography>
 
       <Paper
@@ -131,16 +132,16 @@ export default function GroupedRadarCharts() {
           variant={isSmUp ? 'h6' : 'subtitle1'}
           align="center"
           fontWeight="bold"
-          gutterBottom
-          sx={{ mt: 3 }}
+
+          sx={{ mt: 0 }}
         >
           Daily GHG Emissions by Diet Category
         </Typography>
         <Typography
-          variant={isSmUp ? 'subtitle1' : 'caption'}
+          sx={{color: "grey"}}
+          fontSize={12}
           align="center"
           color="textSecondary"
-          gutterBottom
         >
           Units: CO₂ in kg per day (kg/d); CH₄ and N₂O in g per day (g/d)
         </Typography>
@@ -168,65 +169,64 @@ export default function GroupedRadarCharts() {
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <EnergySavingsLeafIcon sx={{ color: '#357960' }} />
-            <Typography variant="h6" fontWeight="bold">
-              Vegans
+            <Typography fontSize={16} fontWeight="bold">
+              Significance of these gases
             </Typography>
           </Box>
           <Typography variant="body2">
-            Emit the lowest amount of greenhouse gases.
+            These gases are the biggest contributors to global warming. Small changes in their concentrations can lead to big changes in Earth's temperature and climate.
+          </Typography>
+        </Paper>
+        <Paper
+          elevation={0}
+          sx={{
+            p: 3,
+            flex: 1,
+            border: '1px solid #d32f2f',
+            borderRadius: '10px',
+            background: 'rgba(211, 47, 47, 0.05)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1.5,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <FastfoodIcon sx={{ color: '#d32f2f' }} />
+            <Typography variant="h6" fontWeight="bold">
+              Vegans vs High Meat-Eaters
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            While vegans emit the lowest amount of greenhouse gases, high meat-eaters produce up to <strong>3x</strong> more greenhouse gases.
           </Typography>
         </Paper>
 
-  <Paper
-    elevation={0}
-    sx={{
-      p: 3,
-      flex: 1,
-      border: '1px solid #d32f2f',
-      borderRadius: '10px',
-      background: 'rgba(211, 47, 47, 0.05)',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 1.5,
-    }}
-  >
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-      <FastfoodIcon sx={{ color: '#d32f2f' }} />
-      <Typography variant="h6" fontWeight="bold">
-        High Meat-Eaters
-      </Typography>
-    </Box>
-    <Typography variant="body2">
-      Produce up to <strong>3x</strong> more greenhouse gases than vegans.
-    </Typography>
-  </Paper>
-
-  <Paper
-    elevation={0}
-    sx={{
-      p: 3,
-      flex: 1,
-      border: '1px solid #f9a825',
-      borderRadius: '10px',
-      background: 'rgba(249, 168, 37, 0.05)',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 1.5,
-    }}
-  >
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-      <LightbulbIcon sx={{ color: '#f9a825' }} />
-      <Typography variant="h6" fontWeight="bold">
-        Why This Matters
-      </Typography>
-    </Box>
-    <Typography variant="body2">
-      Food production drives ~26 % of global emissions. Swapping even a few meals
-      for plant-based options trims your climate footprint and eases demand for
-      resource-intensive livestock.
-    </Typography>
-  </Paper>
-</Stack>
+        <Paper
+          elevation={0}
+          sx={{
+            p: 3,
+            flex: 1,
+            border: '1px solid #f9a825',
+            borderRadius: '10px',
+            background: 'rgba(249, 168, 37, 0.05)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1.5,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <LightbulbIcon sx={{ color: '#f9a825' }} />
+            <Typography variant="h6" fontWeight="bold">
+              Why This Matters
+            </Typography>
+          </Box>
+          <Typography variant="body2">
+            Food production drives ~26 % of global emissions. Swapping even a few meals
+            for plant-based options trims your climate footprint and eases demand for
+            resource-intensive livestock.
+          </Typography>
+        </Paper>
+      </Stack>
     </Box>
   )
 }

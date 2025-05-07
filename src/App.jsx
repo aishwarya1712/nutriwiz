@@ -260,9 +260,9 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-            <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
-              Let's talk environment
-            </Typography>
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
+          Let's talk <Box component="span" sx={{ color: '#f66277' }}>water</Box>
+        </Typography>
       </Box>
 
       <Box className="snap-section">
@@ -287,14 +287,8 @@ function App() {
 
       <Box className="snap-section">
         <Stack alignItems={"center"} justifyContent={"center"} sx={{ height: "80%"}}>
-          <Typography sx={{ fontWeight: 'bold', fontSize: 45, textAlign: "center", flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',}}>
-            Plant-based food also has a smaller land footprint*
-          </Typography>
-          <Typography variant={"subtitle1"} sx={{ color: "grey", fontSize: 20, textAlign: "center"}}>
-            * Land footprint refers to the land needed to grow crops, raise livestock, extract resources, or build infrastructure for a product throughout its lifecycle
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
+            Let's talk <Box component="span" sx={{ color: '#f66277' }}> land</Box>
           </Typography>
         </Stack>
       </Box>
@@ -304,17 +298,27 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-          <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-            It doesn't end there.</Typography>
-            <Typography sx={{ fontWeight: 'bold', fontSize: 32 }}>
-              Plant-based foods generate significantly lower greenhouse gas emissions, making them far gentler on the planet.
-            </Typography>
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
+          Let's talk <Box component="span" sx={{ color: '#f66277' }}> greenhouse gas emissions</Box>
+        </Typography>
       </Box>
 
       <Box className="snap-section">
         <EmissionsRadarChart/>
       </Box>
 
+      <Box className="snap-section">
+        <Typography sx={{ fontWeight: 'bold', fontSize: 40, px: 3, textAlign: 'center' }}>
+          Every day you eat plant-based adds up to real change.
+        </Typography>
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center', color: '#f66277' }}>
+          Ready to see the impact of going plant-based over the course of a year?
+        </Typography>
+      </Box>
+      
+      <Box className="snap-section">
+        <WeeklyImpactSection />
+      </Box>
       <Box className="snap-section">
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
           The health benefits of plant-based diets are extraordinary.
@@ -329,18 +333,6 @@ function App() {
           })
         }
         </Stack>
-      </Box>
-
-        <Box className="snap-section">
-          <Typography sx={{ fontWeight: 'bold', fontSize: 40, px: 3, textAlign: 'center' }}>
-            Every day you eat plant-based adds up to real change.
-          </Typography>
-          <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
-            Ready to see the impact of going plant-based over the course of a year?
-          </Typography>
-        </Box>
-      <Box className="snap-section">
-        <WeeklyImpactSection />
       </Box>
 
     </Box>

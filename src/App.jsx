@@ -315,7 +315,7 @@ function App() {
           bottom: 0,
           left: 0,
           width: '100%',
-          height: '30vh',      // or any responsive unit
+          height: '30vh',   
           zIndex: 2,
           animation: 'waveFront 6s ease-in-out infinite',
         }}
@@ -367,12 +367,40 @@ function App() {
         <BurgerComparison />
       </Box>
 
-      <Box className="snap-section">
-        <Stack alignItems={"center"} justifyContent={"center"} sx={{ height: "80%"}}>
-        <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
-            Let's talk <Box component="span" sx={{ color: '#f66277' }}> land</Box>
+      <Box
+        className="snap-section"
+        sx={{
+          position: 'relative',        // ← Important for containment
+          overflow: 'hidden',          // ← Prevents leaves from spilling out
+          height: '100vh',
+        }}
+      >
+        <Stack alignItems="center" justifyContent="center" sx={{ height: '80%' }}>
+          <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
+            Let's talk <Box component="span" sx={{ color: '#f66277' }}>land</Box>
           </Typography>
         </Stack>
+
+        {/* Falling leaves inside this box only */}
+        {Array.from({ length: 40 }).map((_, i) => (
+          <Box
+            key={i}
+            component="img"
+            src="/src/assets/leaf.png" // replace with correct path
+            className="falling-leaf"
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: `${Math.random() * 100}%`,
+              width: 80,
+              height: 80,
+              animation: `fallLeaf ${4 + Math.random() * 4}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+              opacity: 0.8,
+              pointerEvents: 'none',
+            }}
+          />
+        ))}
       </Box>
 
       <Box className="snap-section">

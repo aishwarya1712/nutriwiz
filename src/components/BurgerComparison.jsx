@@ -29,7 +29,7 @@ export default function BurgerComparison() {
             component="img"
             src={meatBurger}
             alt="Meat Burger"
-            sx={{ width: 200, height: 'auto' }}
+            sx={{ width: 100, height: 'auto' }}
           />
         </Box>
 

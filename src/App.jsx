@@ -377,7 +377,7 @@ function App() {
       >
         <Stack alignItems="center" justifyContent="center" sx={{ height: '80%' }}>
           <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
-            Let's talk <Box component="span" sx={{ color: '#f66277' }}>land</Box>
+            Let's talk <Box component="span" sx={{ color: '#6b311b' }}>land</Box>
           </Typography>
         </Stack>
 

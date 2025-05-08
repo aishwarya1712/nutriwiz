@@ -90,18 +90,8 @@
   100% { transform: translateY(0); }
 }
 @keyframes fallLeaf {
-  0% {
-    transform: translateY(-10%) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) rotate(180deg);
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(50vh) rotate(180deg); }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }

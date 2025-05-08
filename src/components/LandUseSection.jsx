@@ -61,7 +61,7 @@ export default function LandUseSection() {
       initial="hidden"
       animate={inView ? 'show' : 'hidden'}
     >
-      <Stack spacing={8} alignItems="center">
+      <Stack spacing={5} alignItems="center">
         <Stack alignItems="center">
         <Typography fontSize={45} fontWeight="bold">
           How much land is used daily to feed one person?

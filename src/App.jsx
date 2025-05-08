@@ -12,7 +12,6 @@ import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
 import FlashCard from './components/FlashCard';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
@@ -293,7 +292,7 @@ function App() {
           bottom: -20,
           left: 0,
           width: '100%',
-          height: '45%',
+          height: '50vh',
           zIndex: 1,
           opacity: 0.4,
           animation: 'waveBack 10s ease-in-out infinite',
@@ -326,25 +325,25 @@ function App() {
           d="M0,192L48,197.3C96,203,192,213,288,224C384,235,480,245,576,218.7C672,192,768,128,864,112C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L0,320Z"
         />
       </Box>
-        {/* Bubble container */}
-        <Box className="bubble-container" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-          {Array.from({ length: 10 }).map((_, i) => (
-            <Box key={i} className="bubble" />
-          ))}
-        </Box>
+      {Array.from({ length: 40 }).map((_, i) => (
         <Box
+          key={i}
+          component="img"
+          src="/src/assets/water_drop.png" 
+          className="rising-drop"
           sx={{
             position: 'absolute',
-            bottom: 24,
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            zIndex: 4,
-            animation: 'bounce 2s infinite',
+            bottom: 0,
+            left: `${Math.random() * 100}%`,
+            width: 60,
+            height: 60,
+            animation: `riseDrop ${4 + Math.random() * 4}s linear infinite`,
+            animationDelay: `${Math.random() * 5}s`,
+            opacity: 0.9,
+            pointerEvents: 'none',
           }}
-        >
-          <ArrowDownwardIcon fontSize="large" sx={{ color: '#0077b6' }} />
-        </Box>
+        />
+      ))}
       </Box>
 
       <Box className="snap-section">

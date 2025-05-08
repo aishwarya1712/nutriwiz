@@ -12,6 +12,8 @@ import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
 import FlashCard from './components/FlashCard';
+import waterImg from './assets/water_drop.png'
+import leafImg from './assets/leaf.png'
 
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
@@ -329,7 +331,7 @@ function App() {
         <Box
           key={i}
           component="img"
-          src="/src/assets/water_drop.png" 
+          src={waterImg}
           className="rising-drop"
           sx={{
             position: 'absolute',
@@ -385,7 +387,7 @@ function App() {
           <Box
             key={i}
             component="img"
-            src="/src/assets/leaf.png" // replace with correct path
+            src={leafImg}
             className="falling-leaf"
             sx={{
               position: 'absolute',

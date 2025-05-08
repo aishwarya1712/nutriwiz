@@ -8,17 +8,18 @@
 /* #c5d893ff */
 /* bcd5b0 */
 
-
+/*
 #root {
-    /* a gentle, multi-stop green gradient */
-    /* background: linear-gradient(
+    /* a gentle, multi-stop green gradient
+    background: linear-gradient(
        160deg,
       #f7fcf5 0%,
       #e3f9e5 35%, 
       #c1eec2 70%,
       #8ecda2 100%
-    );*/
-}
+    );
+} 
+*/
 
 #root {
   /* background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%); */
@@ -27,4 +28,82 @@
 background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(225deg, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+/*
+.water-fill::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00bcd4;
+  clip-path: ellipse(150% 20% at 50% 100%);
+  animation: riseWave 5s ease-in-out forwards;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+@keyframes riseWave {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+*/
+@keyframes waveFront {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes waveBack {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 40px;
+  height: 40px;
+  background: #00bcd4;  /* Light blue with 50% opacity */
+  border-radius: 100%;
+  animation: rise 8s infinite ease-in;
+}
+
+.bubble:nth-child(odd) {
+  background: #4dd0e1;  /* Sky blue with 60% opacity */
+}
+
+.bubble:nth-child(1) { left: 10%; animation-duration: 7s; }
+.bubble:nth-child(2) { left: 25%; animation-duration: 9s; }
+.bubble:nth-child(3) { left: 40%; animation-duration: 6s; }
+.bubble:nth-child(4) { left: 55%; animation-duration: 8s; }
+.bubble:nth-child(5) { left: 70%; animation-duration: 7s; }
+.bubble:nth-child(6) { left: 85%; animation-duration: 10s; }
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
 }

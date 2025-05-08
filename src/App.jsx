@@ -12,6 +12,7 @@ import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
 import FlashCard from './components/FlashCard';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
@@ -259,10 +260,91 @@ function App() {
         </Stack>
       </Box>
 
-      <Box className="snap-section">
-        <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
-          Let's talk <Box component="span" sx={{ color: '#f66277' }}>water</Box>
+      <Box
+        className="snap-section water-fill"
+        sx={{
+          position: 'relative',
+          overflow: 'hidden',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Typography
+          sx={{
+            fontWeight: 'bold',
+            fontSize: 48,
+            textAlign: 'center',
+            zIndex: 2,
+            position: 'relative',
+          }}
+        >
+          Let's talk <Box component="span" sx={{ color: '#0077b6' }}>water</Box>
         </Typography>
+        
+        {/* SVG Water Wave */}
+        {/* BACK WAVE */}
+      <Box
+        component="svg"
+        viewBox="0 0 1440 320"
+        sx={{
+          position: 'absolute',
+          bottom: -20,
+          left: 0,
+          width: '100%',
+          height: '45%',
+          zIndex: 1,
+          opacity: 0.4,
+          animation: 'waveBack 10s ease-in-out infinite',
+        }}
+      >
+        <path
+          fill="#4dd0e1"
+          d="M0,96L48,106.7C96,117,192,139,288,160C384,181,480,203,576,192C672,181,768,139,864,133.3C960,128,1056,160,1152,154.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        />
+      </Box>
+
+      {/* FRONT WAVE */}
+      <Box
+        component="svg"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '30vh',      // or any responsive unit
+          zIndex: 2,
+          animation: 'waveFront 6s ease-in-out infinite',
+        }}
+      >
+        <path
+          fill="#00bcd4"
+          fillOpacity="0.5"
+          d="M0,192L48,197.3C96,203,192,213,288,224C384,235,480,245,576,218.7C672,192,768,128,864,112C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L0,320Z"
+        />
+      </Box>
+        {/* Bubble container */}
+        <Box className="bubble-container" sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+          {Array.from({ length: 10 }).map((_, i) => (
+            <Box key={i} className="bubble" />
+          ))}
+        </Box>
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 24,
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            zIndex: 4,
+            animation: 'bounce 2s infinite',
+          }}
+        >
+          <ArrowDownwardIcon fontSize="large" sx={{ color: '#0077b6' }} />
+        </Box>
       </Box>
 
       <Box className="snap-section">

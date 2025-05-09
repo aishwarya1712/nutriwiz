@@ -527,7 +527,7 @@ function App() {
         }}
       >
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
-          Let's talk <Box component="span" sx={{ color: '#4a4a4a' }}> greenhouse gas emissions</Box>
+          Let's talk <Box component="span" sx={{ color: '#357960' }}> greenhouse gas emissions</Box>
         </Typography>
         {/* Floating smoke clouds */}
         {Array.from({ length: 15 }).map((_, i) => (
@@ -565,7 +565,7 @@ function App() {
         <Typography sx={{ fontWeight: 'bold', fontSize: 40, px: 3, textAlign: 'center' }}>
           Every day you eat plant-based adds up to real change.
         </Typography>
-        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center', color: '#f66277' }}>
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center', color: '#357960' }}>
           Ready to see the impact of going plant-based over the course of a year?
         </Typography>
       </Box>
@@ -573,7 +573,7 @@ function App() {
       <Box className="snap-section">
         <WeeklyImpactSection />
       </Box>
-      
+
       <Box className="snap-section">
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
           The health benefits of plant-based diets are extraordinary.

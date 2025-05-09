@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
-import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox, Slider, IconButton, Button } from '@mui/material'
+import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox, Slider, IconButton, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
@@ -327,6 +327,7 @@ function App() {
     cheaper: false,
     notReally: false
   });
+  const [openDialog, setOpenDialog] = useState(false);
   const section3Ref = useRef(null);
 
   useEffect(() => {
@@ -346,8 +347,7 @@ function App() {
   };
 
   const handleSubmit = () => {
-    // Implement the submit logic here
-    console.log("Submit clicked");
+    setOpenDialog(true);
     setReasons({
       waterFootprint: false,
       landUse: false,
@@ -355,6 +355,10 @@ function App() {
       cheaper: false,
       notReally: false
     });
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
@@ -694,6 +698,67 @@ function App() {
           </FormGroup>
         </Box>
       </Box>
+
+      <Dialog 
+        open={openDialog} 
+        onClose={handleCloseDialog}
+        PaperProps={{
+          sx: {
+            borderRadius: 3,
+            padding: 2,
+            maxWidth: '500px',
+            width: '90%',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          }
+        }}
+      >
+        <DialogTitle sx={{ 
+          textAlign: 'center', 
+          color: '#357960',
+          fontSize: '1.5rem',
+          fontWeight: 600,
+          pb: 1
+        }}>
+          Thank You! 🌱
+        </DialogTitle>
+        <DialogContent>
+          <Typography sx={{ 
+            textAlign: 'center',
+            fontSize: '1.1rem',
+            color: '#2c3e50',
+            mb: 2
+          }}>
+            Every small step towards plant-based eating makes a big difference for our planet.
+          </Typography>
+          <Typography sx={{ 
+            textAlign: 'center',
+            fontSize: '1rem',
+            color: '#666',
+            fontStyle: 'italic'
+          }}>
+            Together, we can create a more sustainable future.
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center', pb: 2 }}>
+          <Button
+            onClick={handleCloseDialog}
+            variant="contained"
+            sx={{
+              backgroundColor: '#357960',
+              color: 'white',
+              px: 4,
+              py: 1,
+              borderRadius: '12px',
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: '#2c6350',
+              }
+            }}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
     </>
   )

@@ -18,11 +18,12 @@ import {
   Legend,
 } from 'recharts'
 
-const veganDaily = { land: 4.37, CO2: 2.16, CH4: 4.39, N2O: 0.71 }
-const meatDaily  = { land: 16.78, CO2: 5.61, CH4: 45.09, N2O: 1.88 }
+const veganDaily = { land: 4.37, CO2: 2.16, CH4: 4.39, N2O: 0.71, water: 6.6 }
+const meatDaily  = { land: 16.78, CO2: 5.61, CH4: 45.09, N2O: 1.88, water: 13.2 }
 
 const unitLabels = {
   'Land use': 'm²/yr',
+  'Virtual Water': '~100 gal/yr',
   CO2: 'kg/yr',
   CH4: 'g/yr',
   N2O: 'g/yr',
@@ -49,6 +50,7 @@ export default function WeeklyImpactSection() {
     CO2 : meatDaily.CO2  * 365,
     CH4 : meatDaily.CH4  * 365,
     N2O : meatDaily.N2O  * 365,
+    water: meatDaily.water * 365,
   }
 
   const scenario = {
@@ -56,6 +58,7 @@ export default function WeeklyImpactSection() {
     CO2 : veganDaily.CO2  * daysPlant + meatDaily.CO2  * daysMeat,
     CH4 : veganDaily.CH4  * daysPlant + meatDaily.CH4  * daysMeat,
     N2O : veganDaily.N2O  * daysPlant + meatDaily.N2O  * daysMeat,
+    water: veganDaily.water * daysPlant + meatDaily.water * daysMeat,
   }
 
   const pct = m => ((baseline[m] - scenario[m]) / baseline[m]) * 100
@@ -65,6 +68,7 @@ export default function WeeklyImpactSection() {
     { metric: 'CO2', baseline: baseline.CO2,  you: scenario.CO2,  unit: unitLabels.CO2 },
     { metric: 'CH4', baseline: baseline.CH4,  you: scenario.CH4,  unit: unitLabels.CH4 },
     { metric: 'N2O', baseline: baseline.N2O,  you: scenario.N2O,  unit: unitLabels.N2O },
+    { metric: 'Virtual Water', baseline: baseline.water,  you: scenario.water,  unit: unitLabels['Virtual Water'] },
   ]
 
   const renderLabel = ({ x, y, width, value }) => (
@@ -98,7 +102,7 @@ export default function WeeklyImpactSection() {
       </Typography>
 
       <Box sx={{ width: '100%', maxWidth: 600, mb: 3 }}>
-        <Typography ontSize={20} gutterBottom>
+        <Typography fontSize={24} gutterBottom>
           How many plant-based days per week? <strong>{plantDays}</strong>
         </Typography>
         <Slider
@@ -111,8 +115,8 @@ export default function WeeklyImpactSection() {
         />
       </Box>
 
-      <Typography fontSize={28} align="center" sx={{ maxWidth: 900, mb: 3 }}  fontWeight={"bold"}>
-        2.&nbsp;Compare how much land, CO₂, CH₄ &amp; N₂O you use, versus a 100 % meat diet.
+      <Typography fontSize={24} align="center" sx={{ maxWidth: 900, mb: 3 }}  fontWeight={"bold"}>
+        2.&nbsp;Compare how much land, virtual water, CO₂, CH₄ &amp; N₂O you use, versus a 100 % meat diet.
       </Typography>
       <Paper
         elevation={2}
@@ -141,6 +145,9 @@ export default function WeeklyImpactSection() {
           <Typography component="li" variant="body1">
             • <strong>N₂O</strong> by <strong>{pct('N2O').toFixed(0)} %</strong>
           </Typography>
+          <Typography component="li" variant="body1">
+            • <strong>Virtual Water</strong> by <strong>{pct('water').toFixed(0)} %</strong>
+          </Typography>
         </Box>
       </Paper>
 
@@ -148,7 +155,7 @@ export default function WeeklyImpactSection() {
         sx={{
           width: '100%',
           height: 400,
-          maxWidth: 700,
+          maxWidth: 1000,
           ...revealStyle,
         }}
       >
@@ -163,7 +170,7 @@ export default function WeeklyImpactSection() {
               dataKey="metric"
               tickFormatter={v => `${v} (${unitLabels[v]})`}
               interval={0}
-              angle={-30}
+              angle={-15}
               textAnchor="end"
               height={60}
             />

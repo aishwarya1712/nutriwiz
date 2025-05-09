@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
@@ -12,9 +12,9 @@ import BurgerComparison from './components/BurgerComparison';
 import WeeklyImpactSection from './components/WeeklyImpactSection';
 import VirtualWaterSection from './components/VirtualWaterSection';
 import FlashCard from './components/FlashCard';
-import waterImg from './assets/water_drop.png'
-import leafImg from './assets/leaf.png'
-
+import waterImg from './assets/water_drop.png';
+import leafImg from './assets/leaf.png';
+import smokeCloud from './assets/smoke_cloud.png';
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
 // add more icons and pictures
@@ -224,6 +224,13 @@ const cards = [
 
 function App() {
   const [showMore, setShowMore] = useState(false);
+  const [reasons, setReasons] = useState({
+    waterFootprint: false,
+    landUse: false,
+    emissions: false,
+    cheaper: false,
+    notReally: false
+  });
   const section3Ref = useRef(null);
 
   useEffect(() => {
@@ -234,6 +241,13 @@ function App() {
 
   const snapDown = () =>
     window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+
+  const handleReasonChange = (event) => {
+    setReasons({
+      ...reasons,
+      [event.target.name]: event.target.checked,
+    });
+  };
 
   return (
     <>
@@ -262,7 +276,7 @@ function App() {
       </Box>
 
       <Box
-        className="snap-section water-fill"
+        className="snap-section"
         sx={{
           position: 'relative',
           overflow: 'hidden',
@@ -408,10 +422,43 @@ function App() {
         <LandUseSection/>
       </Box>
 
-      <Box className="snap-section">
+      <Box
+        className="snap-section"
+        sx={{
+          position: 'relative',        // ← Important for containment
+          overflow: 'hidden',          // ← Prevents leaves from spilling out
+          height: '100vh',
+        }}
+      >
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, textAlign: 'center' }}>
-          Let's talk <Box component="span" sx={{ color: '#f66277' }}> greenhouse gas emissions</Box>
+          Let's talk <Box component="span" sx={{ color: '#4a4a4a' }}> greenhouse gas emissions</Box>
         </Typography>
+        {/* Floating smoke clouds */}
+        {Array.from({ length: 15 }).map((_, i) => (
+          <Box
+            key={i}
+            component="img"
+            src={smokeCloud}
+            alt="smoke"
+            sx={{
+              position: 'absolute',
+              top: `${Math.random() * 80}vh`,
+              left: '-200px',
+              width: `${300 + Math.random() * 100}px`,
+              height: 'auto',
+              opacity: 0.3 + Math.random() * 0.4,
+              animation: `floatSmoke ${8 + i * 3}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+              pointerEvents: 'none',
+              zIndex: 1,
+              transform: `scale(${0.8 + Math.random() * 0.4})`,
+              filter: 'blur(1px)',
+              '&:hover': {
+                filter: 'blur(2px)',
+              },
+            }}
+          />
+        ))}
       </Box>
 
       <Box className="snap-section">
@@ -437,6 +484,129 @@ function App() {
       </Box>
 
       <Box className="snap-section">
+        <Box sx={{
+          maxWidth: '1000px',
+          mx: 'auto',
+          p: 4,
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          borderRadius: 4,
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+        }}>
+          <Stack spacing={4} alignItems="center">
+            <Typography variant="h4" fontWeight="bold" color="#357960" textAlign="center">
+              Cost Comparison: Plant vs Animal Proteins
+            </Typography>
+            
+            <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '100%', gap: 4 }}>
+              {/* Plant Proteins */}
+              <Box sx={{ 
+                textAlign: 'center',
+                p: 3,
+                borderRadius: 2,
+                backgroundColor: 'rgba(53, 121, 96, 0.1)',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                }
+              }}>
+                <Typography variant="h6" color="#357960" gutterBottom>
+                  Plant Proteins
+                </Typography>
+                <Box sx={{ 
+                  fontSize: '2rem', 
+                  fontWeight: 'bold',
+                  color: '#357960',
+                  animation: 'pulse 2s infinite'
+                }}>
+                  $1.50/lb
+                </Box>
+                <Typography variant="body2" color="text.secondary">
+                  Dried Beans
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Tofu, Tempeh
+                </Typography>
+              </Box>
+
+              {/* Meat Proteins */}
+              <Box sx={{ 
+                textAlign: 'center',
+                p: 3,
+                borderRadius: 2,
+                backgroundColor: 'rgba(246, 98, 119, 0.1)',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                }
+              }}>
+                <Typography variant="h6" color="#f66277" gutterBottom>
+                  Meat Proteins
+                </Typography>
+                <Box sx={{ 
+                  fontSize: '2rem', 
+                  fontWeight: 'bold',
+                  color: '#f66277',
+                  animation: 'pulse 2s infinite'
+                }}>
+                  $4-$20/lb
+                </Box>
+                <Typography variant="body2" color="text.secondary">
+                  Various Cuts
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Premium Options
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Savings Breakdown */}
+            <Box sx={{ 
+              width: '100%',
+              mt: 4,
+              p: 3,
+              backgroundColor: 'rgba(53, 121, 96, 0.05)',
+              borderRadius: 2,
+            }}>
+              <Typography variant="h5" fontWeight="bold" color="#357960" textAlign="center" gutterBottom>
+                Potential Savings
+              </Typography>
+              <Box sx={{ 
+                display: 'flex', 
+                justifyContent: 'space-around',
+                flexWrap: 'wrap',
+                gap: 2
+              }}>
+                <Box sx={{ textAlign: 'center', p: 2 }}>
+                  <Typography variant="h4" color="#357960" fontWeight="bold">
+                    -33%
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Vegan Diet
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: 'center', p: 2 }}>
+                  <Typography variant="h4" color="#357960" fontWeight="bold">
+                    -14%
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Flexitarian
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: 'center', p: 2 }}>
+                  <Typography variant="h4" color="#f66277" fontWeight="bold">
+                    +2%
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Pescatarian
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Stack>
+        </Box>
+      </Box>
+
+      <Box className="snap-section">
         <Stack direction="row" spacing={2}>
         {
           cards.map((card, key) => {
@@ -446,6 +616,70 @@ function App() {
         </Stack>
       </Box>
 
+      <Box className="snap-section">
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center', mb: 4 }}>
+          Why will you choose plant-based diets?
+        </Typography>
+        <Box sx={{
+          maxWidth: '800px',
+          mx: 'auto',
+          p: 4,
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          borderRadius: 4,
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+        }}>
+          <FormGroup sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 3
+          }}>
+            {[
+              { name: 'waterFootprint', label: 'Virtual Water Footprint' },
+              { name: 'landUse', label: 'Land Use' },
+              { name: 'emissions', label: 'Greenhouse Gas Emissions' },
+              { name: 'cheaper', label: "It's cheaper" },
+              { name: 'notReally', label: 'Not Sure' }
+            ].map((option) => (
+              <FormControlLabel
+                key={option.name}
+                control={
+                  <Checkbox 
+                    checked={reasons[option.name]}
+                    onChange={handleReasonChange}
+                    name={option.name}
+                    sx={{ 
+                      '& .MuiSvgIcon-root': { 
+                        fontSize: 32,
+                        color: '#357960',
+                      },
+                      '&:hover': {
+                        backgroundColor: 'rgba(53, 121, 96, 0.04)',
+                      },
+                      padding: '8px',
+                      borderRadius: '8px',
+                    }}
+                  />
+                }
+                label={option.label}
+                sx={{ 
+                  '& .MuiFormControlLabel-label': { 
+                    fontSize: 24,
+                    color: '#2c3e50',
+                    fontWeight: 500,
+                  },
+                  '&:hover': {
+                    backgroundColor: 'rgba(53, 121, 96, 0.04)',
+                    borderRadius: '8px',
+                  },
+                  padding: '8px',
+                  borderRadius: '8px',
+                  transition: 'all 0.2s ease-in-out',
+                }}
+              />
+            ))}
+          </FormGroup>
+        </Box>
+      </Box>
     </Box>
     </>
   )

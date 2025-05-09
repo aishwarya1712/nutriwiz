@@ -592,12 +592,18 @@ function App() {
 
       <Box className="snap-section">
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
-          The health benefits of plant-based diets are extraordinary.
+          There is more to it...
         </Typography>
       </Box>
 
       <Box className="snap-section">
         <PriceComparison />
+      </Box>
+
+      <Box className="snap-section">
+        <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
+          Now let's bust some myths!
+        </Typography>
       </Box>
 
       <Box className="snap-section">

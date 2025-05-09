@@ -573,6 +573,7 @@ function App() {
       <Box className="snap-section">
         <WeeklyImpactSection />
       </Box>
+      
       <Box className="snap-section">
         <Typography sx={{ fontWeight: 'bold', fontSize: 48, px: 3, textAlign: 'center' }}>
           The health benefits of plant-based diets are extraordinary.

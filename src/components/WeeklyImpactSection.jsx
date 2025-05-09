@@ -102,8 +102,32 @@ export default function WeeklyImpactSection() {
       </Typography>
 
       <Box sx={{ width: '100%', maxWidth: 600, mb: 3 }}>
-        <Typography fontSize={24} gutterBottom>
-          How many plant-based days per week? <strong>{plantDays}</strong>
+        <Typography 
+          fontSize={24} 
+          gutterBottom 
+          sx={{ 
+            color: '#357960',
+            fontWeight: 500,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1
+          }}
+        >
+          How many plant-based days per week? 
+          <Box 
+            component="span" 
+            sx={{ 
+              color: '#f66277',
+              backgroundColor: 'rgba(246, 98, 119, 0.1)',
+              px: 2,
+              py: 0.5,
+              borderRadius: 2,
+              minWidth: 60,
+              textAlign: 'center'
+            }}
+          >
+            <strong>{plantDays}</strong>
+          </Box>
         </Typography>
         <Slider
           value={plantDays}
@@ -111,7 +135,60 @@ export default function WeeklyImpactSection() {
           min={0}
           max={7}
           step={1}
-          marks
+          marks={[
+            { value: 0, label: '0' },
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+            { value: 6, label: '6' },
+            { value: 7, label: '7' }
+          ]}
+          sx={{
+            '& .MuiSlider-thumb': {
+              width: 16,
+              height: 16,
+              backgroundColor: '#357960',
+              border: '1px solid white',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              '&:hover': {
+                transform: 'scale(1.2)',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+              },
+              '&.Mui-active': {
+                transform: 'scale(1.3)',
+                boxShadow: '0 3px 6px rgba(0,0,0,0.4)'
+              }
+            },
+            '& .MuiSlider-track': {
+              backgroundColor: '#357960',
+              height: 8,
+              borderRadius: 4
+            },
+            '& .MuiSlider-rail': {
+              backgroundColor: '#f66277',
+              height: 8,
+              borderRadius: 4,
+              opacity: 0.3
+            },
+            '& .MuiSlider-mark': {
+              backgroundColor: '#357960',
+              width: 2,
+              height: 8,
+              borderRadius: 1,
+              '&.MuiSlider-markActive': {
+                backgroundColor: '#357960'
+              }
+            },
+            '& .MuiSlider-markLabel': {
+              color: '#357960',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              top: 20
+            }
+          }}
         />
       </Box>
 

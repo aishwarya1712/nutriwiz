@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
-import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
+import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox, Slider, IconButton } from '@mui/material'
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
@@ -15,6 +15,7 @@ import FlashCard from './components/FlashCard';
 import waterImg from './assets/water_drop.png';
 import leafImg from './assets/leaf.png';
 import smokeCloud from './assets/smoke_cloud.png';
+import PriceComparison from './components/PriceComparison';
 // https://www.downstate.edu/about/community-impact/plant-based/_documents/myths-facts.pdf
 
 // add more icons and pictures
@@ -484,126 +485,7 @@ function App() {
       </Box>
 
       <Box className="snap-section">
-        <Box sx={{
-          maxWidth: '1000px',
-          mx: 'auto',
-          p: 4,
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          borderRadius: 4,
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
-        }}>
-          <Stack spacing={4} alignItems="center">
-            <Typography variant="h4" fontWeight="bold" color="#357960" textAlign="center">
-              Cost Comparison: Plant vs Animal Proteins
-            </Typography>
-            
-            <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '100%', gap: 4 }}>
-              {/* Plant Proteins */}
-              <Box sx={{ 
-                textAlign: 'center',
-                p: 3,
-                borderRadius: 2,
-                backgroundColor: 'rgba(53, 121, 96, 0.1)',
-                transition: 'transform 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                }
-              }}>
-                <Typography variant="h6" color="#357960" gutterBottom>
-                  Plant Proteins
-                </Typography>
-                <Box sx={{ 
-                  fontSize: '2rem', 
-                  fontWeight: 'bold',
-                  color: '#357960',
-                  animation: 'pulse 2s infinite'
-                }}>
-                  $1.50/lb
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  Dried Beans
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Tofu, Tempeh
-                </Typography>
-              </Box>
-
-              {/* Meat Proteins */}
-              <Box sx={{ 
-                textAlign: 'center',
-                p: 3,
-                borderRadius: 2,
-                backgroundColor: 'rgba(246, 98, 119, 0.1)',
-                transition: 'transform 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                }
-              }}>
-                <Typography variant="h6" color="#f66277" gutterBottom>
-                  Meat Proteins
-                </Typography>
-                <Box sx={{ 
-                  fontSize: '2rem', 
-                  fontWeight: 'bold',
-                  color: '#f66277',
-                  animation: 'pulse 2s infinite'
-                }}>
-                  $4-$20/lb
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  Various Cuts
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Premium Options
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* Savings Breakdown */}
-            <Box sx={{ 
-              width: '100%',
-              mt: 4,
-              p: 3,
-              backgroundColor: 'rgba(53, 121, 96, 0.05)',
-              borderRadius: 2,
-            }}>
-              <Typography variant="h5" fontWeight="bold" color="#357960" textAlign="center" gutterBottom>
-                Potential Savings
-              </Typography>
-              <Box sx={{ 
-                display: 'flex', 
-                justifyContent: 'space-around',
-                flexWrap: 'wrap',
-                gap: 2
-              }}>
-                <Box sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h4" color="#357960" fontWeight="bold">
-                    -33%
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Vegan Diet
-                  </Typography>
-                </Box>
-                <Box sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h4" color="#357960" fontWeight="bold">
-                    -14%
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Flexitarian
-                  </Typography>
-                </Box>
-                <Box sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h4" color="#f66277" fontWeight="bold">
-                    +2%
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Pescatarian
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Stack>
-        </Box>
+        <PriceComparison />
       </Box>
 
       <Box className="snap-section">

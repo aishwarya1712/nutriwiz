@@ -117,8 +117,8 @@ export default function WeeklyImpactSection() {
           <Box 
             component="span" 
             sx={{ 
-              color: '#f66277',
-              backgroundColor: 'rgba(246, 98, 119, 0.1)',
+              color: '#357960',
+              backgroundColor: '#4ac3af66',
               px: 2,
               py: 0.5,
               borderRadius: 2,

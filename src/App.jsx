@@ -348,6 +348,13 @@ function App() {
   const handleSubmit = () => {
     // Implement the submit logic here
     console.log("Submit clicked");
+    setReasons({
+      waterFootprint: false,
+      landUse: false,
+      emissions: false,
+      cheaper: false,
+      notReally: false
+    });
   };
 
   return (

@@ -18,11 +18,12 @@ import {
   Legend,
 } from 'recharts'
 
-const veganDaily = { land: 4.37, CO2: 2.16, CH4: 4.39, N2O: 0.71 }
-const meatDaily  = { land: 16.78, CO2: 5.61, CH4: 45.09, N2O: 1.88 }
+const veganDaily = { land: 4.37, CO2: 2.16, CH4: 4.39, N2O: 0.71, water: 6.6 }
+const meatDaily  = { land: 16.78, CO2: 5.61, CH4: 45.09, N2O: 1.88, water: 13.2 }
 
 const unitLabels = {
   'Land use': 'm²/yr',
+  'Virtual Water': '~100 gal/yr',
   CO2: 'kg/yr',
   CH4: 'g/yr',
   N2O: 'g/yr',
@@ -49,6 +50,7 @@ export default function WeeklyImpactSection() {
     CO2 : meatDaily.CO2  * 365,
     CH4 : meatDaily.CH4  * 365,
     N2O : meatDaily.N2O  * 365,
+    water: meatDaily.water * 365,
   }
 
   const scenario = {
@@ -56,6 +58,7 @@ export default function WeeklyImpactSection() {
     CO2 : veganDaily.CO2  * daysPlant + meatDaily.CO2  * daysMeat,
     CH4 : veganDaily.CH4  * daysPlant + meatDaily.CH4  * daysMeat,
     N2O : veganDaily.N2O  * daysPlant + meatDaily.N2O  * daysMeat,
+    water: veganDaily.water * daysPlant + meatDaily.water * daysMeat,
   }
 
   const pct = m => ((baseline[m] - scenario[m]) / baseline[m]) * 100
@@ -65,6 +68,7 @@ export default function WeeklyImpactSection() {
     { metric: 'CO2', baseline: baseline.CO2,  you: scenario.CO2,  unit: unitLabels.CO2 },
     { metric: 'CH4', baseline: baseline.CH4,  you: scenario.CH4,  unit: unitLabels.CH4 },
     { metric: 'N2O', baseline: baseline.N2O,  you: scenario.N2O,  unit: unitLabels.N2O },
+    { metric: 'Virtual Water', baseline: baseline.water,  you: scenario.water,  unit: unitLabels['Virtual Water'] },
   ]
 
   const renderLabel = ({ x, y, width, value }) => (
@@ -98,8 +102,32 @@ export default function WeeklyImpactSection() {
       </Typography>
 
       <Box sx={{ width: '100%', maxWidth: 600, mb: 3 }}>
-        <Typography ontSize={20} gutterBottom>
-          How many plant-based days per week? <strong>{plantDays}</strong>
+        <Typography 
+          fontSize={24} 
+          gutterBottom 
+          sx={{ 
+            color: '#357960',
+            fontWeight: 500,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1
+          }}
+        >
+          How many plant-based days per week? 
+          <Box 
+            component="span" 
+            sx={{ 
+              color: '#357960',
+              backgroundColor: '#4ac3af66',
+              px: 2,
+              py: 0.5,
+              borderRadius: 2,
+              minWidth: 60,
+              textAlign: 'center'
+            }}
+          >
+            <strong>{plantDays}</strong>
+          </Box>
         </Typography>
         <Slider
           value={plantDays}
@@ -107,12 +135,65 @@ export default function WeeklyImpactSection() {
           min={0}
           max={7}
           step={1}
-          marks
+          marks={[
+            { value: 0, label: '0' },
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+            { value: 6, label: '6' },
+            { value: 7, label: '7' }
+          ]}
+          sx={{
+            '& .MuiSlider-thumb': {
+              width: 16,
+              height: 16,
+              backgroundColor: '#357960',
+              border: '1px solid white',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              '&:hover': {
+                transform: 'scale(1.2)',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+              },
+              '&.Mui-active': {
+                transform: 'scale(1.3)',
+                boxShadow: '0 3px 6px rgba(0,0,0,0.4)'
+              }
+            },
+            '& .MuiSlider-track': {
+              backgroundColor: '#357960',
+              height: 8,
+              borderRadius: 4
+            },
+            '& .MuiSlider-rail': {
+              backgroundColor: '#f66277',
+              height: 8,
+              borderRadius: 4,
+              opacity: 0.3
+            },
+            '& .MuiSlider-mark': {
+              backgroundColor: '#357960',
+              width: 2,
+              height: 8,
+              borderRadius: 1,
+              '&.MuiSlider-markActive': {
+                backgroundColor: '#357960'
+              }
+            },
+            '& .MuiSlider-markLabel': {
+              color: '#357960',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              top: 20
+            }
+          }}
         />
       </Box>
 
-      <Typography fontSize={28} align="center" sx={{ maxWidth: 900, mb: 3 }}  fontWeight={"bold"}>
-        2.&nbsp;Compare how much land, CO₂, CH₄ &amp; N₂O you use, versus a 100 % meat diet.
+      <Typography fontSize={24} align="center" sx={{ maxWidth: 900, mb: 3 }}  fontWeight={"bold"}>
+        2.&nbsp;Compare how much land, virtual water, CO₂, CH₄ &amp; N₂O you use, versus a 100 % meat diet.
       </Typography>
       <Paper
         elevation={2}
@@ -141,6 +222,9 @@ export default function WeeklyImpactSection() {
           <Typography component="li" variant="body1">
             • <strong>N₂O</strong> by <strong>{pct('N2O').toFixed(0)} %</strong>
           </Typography>
+          <Typography component="li" variant="body1">
+            • <strong>Virtual Water</strong> by <strong>{pct('water').toFixed(0)} %</strong>
+          </Typography>
         </Box>
       </Paper>
 
@@ -148,7 +232,7 @@ export default function WeeklyImpactSection() {
         sx={{
           width: '100%',
           height: 400,
-          maxWidth: 700,
+          maxWidth: 1000,
           ...revealStyle,
         }}
       >
@@ -163,7 +247,7 @@ export default function WeeklyImpactSection() {
               dataKey="metric"
               tickFormatter={v => `${v} (${unitLabels[v]})`}
               interval={0}
-              angle={-30}
+              angle={-15}
               textAnchor="end"
               height={60}
             />

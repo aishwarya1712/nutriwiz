@@ -108,8 +108,8 @@ export default function WaterImpactSection({ onNext }) {
       </Stack>
       <Stack alignItems={"center"} spacing={5}>
       <Typography variant="h3">{gallons}&nbsp;gallons</Typography>
-      <Typography variant="subtitle1" color={guess === null ? "textSecondary" : (guess === false ? "tomato": "green")}>
-        {guess === null ? "Make a guess!" : (guess === false ? "Your guess is incorrect - try again!": "Your guess is correct!")}
+      <Typography variant="h6" color={guess === null ? "textSecondary" : (guess === false ? "tomato": "green")}>
+        {guess === null ? "Make a guess!" : (guess === false ? "It is more than you guessed - try again!": "Your guess is correct!")}
       </Typography>
 
       {/* ------- tank graphic ------- */}

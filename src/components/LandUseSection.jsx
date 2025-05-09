@@ -61,11 +61,18 @@ export default function LandUseSection() {
       initial="hidden"
       animate={inView ? 'show' : 'hidden'}
     >
-      <Stack spacing={2} alignItems="center">
+      <Stack spacing={5} alignItems="center">
+        <Stack alignItems="center">
         <Typography fontSize={45} fontWeight="bold">
           How much land is used daily to feed one person?
         </Typography>
-
+        <Typography variant={"subtitle1"} sx={{ color: "black", fontSize: 24}}>
+          Land footprint refers to the land needed to grow crops, raise livestock, extract resources, or build infrastructure for a product throughout its lifecycle.
+        </Typography>
+        </Stack>
+        <Stack>
+          
+        </Stack>
         <Stack spacing={5}>
           <motion.div variants={itemVariants}>
             <Stack direction="row" spacing={5} alignItems="center">
@@ -131,8 +138,11 @@ export default function LandUseSection() {
           </motion.div>
         </Stack>
 
-        <Typography>
-          Study: https://www.nature.com/articles/s43016-023-00795-w
+        <Typography sx={{ fontSize: 14, color: 'text.secondary',textAlign: 'center',  mt: 2 }}>
+          Scarborough, P. et. al. (2023). Vegans, vegetarians, fish-eaters and meat-eaters in the UK show discrepant environmental impacts. Nature, 620, 75–82.{' '} <br></br>
+          <Box component="a" href="https://www.nature.com/articles/s43016-023-00795-w" target="_blank" rel="noopener noreferrer" sx={{ color: 'primary.main', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+          https://www.nature.com/articles/s43016-023-00795-w
+          </Box>
         </Typography>
       </Stack>
     </motion.div>

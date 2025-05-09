@@ -85,7 +85,7 @@ export default function GroupedRadarCharts() {
         <br/> CO₂ (Carbon Dioxide), CH₄ (Methane), and N₂O (Nitrous Oxide).
       </Typography>
 
-      <Paper
+      <Paper 
         sx={{
           p: 2,
           width: '100%',

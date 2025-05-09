@@ -8,23 +8,65 @@
 /* #c5d893ff */
 /* bcd5b0 */
 
-
+/*
 #root {
-    /* a gentle, multi-stop green gradient */
-    /* background: linear-gradient(
+    /* a gentle, multi-stop green gradient
+    background: linear-gradient(
        160deg,
       #f7fcf5 0%,
       #e3f9e5 35%, 
       #c1eec2 70%,
       #8ecda2 100%
-    );*/
-}
+    );
+} 
+*/
 
 #root {
   /* background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%); */
   /* background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%); */
   background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(225deg, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(225deg, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+@keyframes riseDrop {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  70% { transform: translateY(-60vh) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+  }
+@keyframes waveFront {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(40px); }
+  100% { transform: translateY(0); }
+}
+@keyframes waveBack {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+  100% { transform: translateY(0); }
+}
+@keyframes fallLeaf {
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(50vh) rotate(180deg); }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+@keyframes floatSmoke {
+  0% { transform: translateX(0) translateY(0) scale(1); opacity: 0.4; }
+  25% { transform: translateX(40vw) translateY(-10px) scale(1.05); opacity: 0.6; }
+  50% { transform: translateX(80vw) translateY(-20px) scale(1); opacity: 0.5; }
+  75% { transform: translateX(120vw) translateY(-10px) scale(0.95); opacity: 0.4; }
+  100% { transform: translateX(160vw) translateY(0) scale(1); opacity: 0.3; }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

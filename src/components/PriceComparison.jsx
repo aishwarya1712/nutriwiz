@@ -144,7 +144,7 @@ const PriceComparison = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
                   <TrendingDownIcon sx={{ color: '#357960', fontSize: 40 }} />
                   <Typography variant="h3" color="#357960" fontWeight="bold">
-                    ${calculateSavings(monthlyMeals)}
+                    ${Math.round(calculateSavings(monthlyMeals))}
                   </Typography>
                 </Box>
                 <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>

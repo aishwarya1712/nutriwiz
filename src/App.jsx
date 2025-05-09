@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './App.css'
-import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox, Slider, IconButton } from '@mui/material'
+import { Box, Stack, Typography, FormGroup, FormControlLabel, Checkbox, Slider, IconButton, Button } from '@mui/material'
 import WaterImpactSection from './components/WaterImpactSection';
 import ImageMorpher from './components/ImageMorpher';
 import CoffeeCupSection from './components/CoffeeCupSection';
@@ -345,6 +345,11 @@ function App() {
     });
   };
 
+  const handleSubmit = () => {
+    // Implement the submit logic here
+    console.log("Submit clicked");
+  };
+
   return (
     <>
      <Box className="snap-wrapper">
@@ -655,6 +660,30 @@ function App() {
                 }}
               />
             ))}
+            <Button
+              variant="contained"
+              onClick={handleSubmit}
+              sx={{
+                mt: 4,
+                py: 2,
+                px: 4,
+                fontSize: '1.25rem',
+                fontWeight: 600,
+                backgroundColor: '#357960',
+                color: 'white',
+                borderRadius: '12px',
+                textTransform: 'none',
+                boxShadow: '0 4px 12px rgba(53, 121, 96, 0.2)',
+                '&:hover': {
+                  backgroundColor: '#2c6350',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 6px 16px rgba(53, 121, 96, 0.3)',
+                },
+                transition: 'all 0.2s ease-in-out',
+              }}
+            >
+              Submit Your Choices
+            </Button>
           </FormGroup>
         </Box>
       </Box>

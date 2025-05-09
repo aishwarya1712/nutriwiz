@@ -66,13 +66,11 @@ const cards = [
       sx={{
         height: '100%',
         p: 3,
-        bgcolor: '#f0fdfa',       // very light teal background
+        bgcolor: '#f0fdfa',
         borderRadius: 2,
-        overflowY: 'auto'
       }}
     >
-      <Stack spacing={4}>
-        {/* Myth/Fact #1 */}
+      <Stack spacing={2}>
         <Stack direction="row" spacing={2} alignItems="flex-start">
           <Box
             component="img"
@@ -82,145 +80,242 @@ const cards = [
               width: 200,
               height: 200,
               objectFit: 'cover',
-              borderRadius: 1
+              borderRadius: 2,
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.05)'
+              }
             }}
           />
-          <Box>
-            <Typography fontWeight="bold" gutterBottom>
-              It's possible to get enough protein on a plant-based diet
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h5" fontWeight="bold" gutterBottom color="#357960">
+              Plant-based diets provide more than enough protein
             </Typography>
-            <Typography variant="body2">
-              The US recommended daily allowance for protein is just 0.8 grams per kg of body weight.
-              Contrary to the hype that everyone needs more protein, most people in the U.S. meet or exceed their needs. 
-              Protein appears in nuts, beans, legumes, soy, whole grains—and even greens, potatoes, mushrooms and squash!. 
-              Fruits contain small amounts, too.
-              A varied whole-food plant diet easily covers your protein needs.
-              Source: https://www.dietaryguidelines.gov/resources/2020-2025-dietary-guidelines-online-materials
+            
+            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              Protein-Rich Plant Foods:
             </Typography>
+            <Box sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 1,
+            }}>
+              {[
+                { category: 'Legumes', items: 'Lentils, Chickpeas' },
+                { category: 'Soy Products', items: 'Tofu, Tempeh' },
+                { category: 'Whole Grains', items: 'Quinoa, Brown Rice' },
+                { category: 'Nuts & Seeds', items: 'Almonds, Chia' },
+                { category: 'Vegetables', items: 'Broccoli, Spinach' }
+              ].map((item, index) => (
+                <Box 
+                  key={index}
+                  sx={{
+                    p: 1,
+                    backgroundColor: 'rgba(53, 121, 96, 0.1)',
+                    borderRadius: 1,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: 'rgba(53, 121, 96, 0.2)',
+                      transform: 'translateY(-2px)'
+                    }
+                  }}
+                >
+                  <Typography variant="subtitle2" fontWeight="bold" color="#357960">
+                    {item.category}
+                  </Typography>
+                  <Typography variant="body2">
+                    {item.items}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              Daily Protein Requirements:
+            </Typography>
+            <Typography variant="body1" sx={{ fontSize: '1rem', mb: 1 }}>
+              The US recommended daily allowance is just 0.8g per kg of body weight.
+              Most Americans exceed this requirement, even on plant-based diets!
+            </Typography>
+
+            <Typography variant="body1" sx={{ fontSize: '1rem', mb: 1 }}>
+              Research shows that protein-rich plant foods are sufficient to achieve full protein adequacy in adults consuming vegetarian/vegan diets. The question of amino acid deficiency has been substantially overstated.
+            </Typography>
+            
           </Box>
         </Stack>
 
-        {/* Myth/Fact #2 */}
+        <Box sx={{ 
+          p: 1, 
+          backgroundColor: 'rgba(53, 121, 96, 0.05)',
+          borderRadius: 1,
+          textAlign: 'center'
+        }}>
+          <Typography variant="body2" color="text.secondary">
+            Sources: <Box 
+              component="a" 
+              href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6893534/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ 
+                color: '#357960',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              }}
+            >
+              Nutrients, 2019
+            </Box>
+            {' • '}
+            <Box 
+              component="a" 
+              href="https://www.dietaryguidelines.gov/resources/2020-2025-dietary-guidelines-online-materials"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ 
+                color: '#357960',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              }}
+            >
+              Dietary Guidelines for Americans 2020-2025
+            </Box>
+          </Typography>
+        </Box>
+      </Stack>
+    </Box>)},
+  { front: (
+    <>
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            p: 2,
+          }}
+        >
+          <Typography align="center" variant="h4" fontWeight="bold">
+            "But plant-based diets can't build muscle"
+          </Typography>
+        </Box>
+        <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", height: "50px"}}>
+          <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
+        </Box>
+    </>
+  ), 
+    back: ( <Box
+      sx={{
+        height: '100%',
+        p: 3,
+        bgcolor: '#f0fdfa',
+        borderRadius: 2,
+      }}
+    >
+      <Stack spacing={2}>
         <Stack direction="row" spacing={2} alignItems="flex-start">
           <Box
             component="img"
             src="https://static01.nyt.com/images/2022/09/01/sports/01streeter-sot-4/01streeter-sot-4-mediumSquareAt3X.jpg"
             alt="Plant-based athletes"
             sx={{
-              width: 150,
+              width: 200,
               height: 200,
               objectFit: 'cover',
-              borderRadius: 1
+              borderRadius: 2,
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+              transition: 'transform 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.05)'
+              }
             }}
           />
-          <Box>
-            <Typography fontWeight="bold" gutterBottom>
-              Plant protein is effective, even for athletes
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h5" fontWeight="bold" gutterBottom color="#357960">
+              Plant protein builds muscle just as effectively
             </Typography>
-            <Typography variant="body2">
-              Countless plant-based bodybuilders and athletes (Serena and Venus Williams, Lewis Hamilton, Tom Brady, Kendrick Farris) thrive on plant protein.  
-              Reviews comparing soy vs. animal supplements show equivalent strength gains—so plants build muscle just fine.
+            
+            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              Elite Athletes on Plant-Based Diets:
+            </Typography>
+            <Box sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: 1,
+              mb: 1
+            }}>
+              {[
+                { name: 'Serena Williams', sport: 'Tennis' },
+                { name: 'Lewis Hamilton', sport: 'Formula 1' },
+                { name: 'Tom Brady', sport: 'NFL' },
+                { name: 'Kendrick Farris', sport: 'Olympic Weightlifting' }
+              ].map((athlete, index) => (
+                <Box 
+                  key={index}
+                  sx={{
+                    p: 1,
+                    backgroundColor: 'rgba(53, 121, 96, 0.1)',
+                    borderRadius: 1,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: 'rgba(53, 121, 96, 0.2)',
+                      transform: 'translateY(-2px)'
+                    }
+                  }}
+                >
+                  <Typography variant="subtitle2" fontWeight="bold" color="#357960">
+                    {athlete.name}
+                  </Typography>
+                  <Typography variant="body2">
+                    {athlete.sport}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              Scientific Evidence:
+            </Typography>
+            <Typography variant="body1" sx={{ fontSize: '1rem', mb: 1 }}>
+              Research shows that plant protein supplements (like soy) produce equivalent muscle growth and strength gains compared to animal protein when matched for leucine content. The key is adequate total protein intake and proper training, not the protein source.
+            </Typography>
+            
+            <Typography variant="body1" sx={{ fontSize: '1rem', fontStyle: 'italic' }}>
+              The key is adequate total protein intake and proper training, not the protein source.
             </Typography>
           </Box>
         </Stack>
 
-        <Typography
-          variant="caption"
-          color="textSecondary"
-          align="center"
-        >
-          Sources: PMC 6893534, PMC 3662288
-        </Typography>
-      </Stack>
-    </Box>)},
-  { front:  <>
-    <Box
-      sx={{
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        p: 2,
-      }}
-    >
-      <Typography align="center" variant="h4" fontWeight="bold">
-        "But plant-based diets are so expensive"
-      </Typography>
-    </Box>
-    <Box sx={{display: 'flex', alignItems: '', justifyContent: 'center', width: "100%", borderRadius: "0px 0px 8px 8px", backgroundColor: "#357960", height: "50px"}}>
-      <Typography fontWeight={500} fontSize={"20px"} color={"#fff"} sx={{ mt: 'auto'}} align="center">Click the card to flip 👆</Typography>
-    </Box>
-</>, 
-  back: ( <Box
-    sx={{
-      height: '100%',
-      p: 3,
-      bgcolor: '#f0fdfa',       // very light teal background
-      borderRadius: 2,
-      overflowY: 'auto'
-    }}
-  >
-    <Stack spacing={4}>
-      {/* Myth/Fact #1 */}
-      <Stack direction="row" spacing={2} alignItems="flex-start">
-        <Box
-          component="img"
-          src="https://images.unsplash.com/photo-1656049471454-ff3c59812741?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Plant protein sources"
-          sx={{
-            width: 200,
-            height: 200,
-            objectFit: 'cover',
-            borderRadius: 1
-          }}
-        />
-        <Box>
-          <Typography fontWeight="bold" gutterBottom>
-            Plant-based diet can actually save you money 
-          </Typography>
-          <Typography variant="body2">
-          A 2015 study from the Journal of Hunger & Environmental Nutrition suggests that a plant-based diet could lead to savings of nearly $750 a year for an average cost of a 2,000-calorie diet following the federal MyPlate nutrition guidelines. 
-
-          Plant-based foods such as beans, grains, sweet potatoes, lentils, and fruits are found in most local
-          supermarkets at relatively low cost and covered under SNAP benefits (Supplemental Nutrition Assistance
-          Program). 
+        <Box sx={{ 
+          p: 1, 
+          backgroundColor: 'rgba(53, 121, 96, 0.05)',
+          borderRadius: 1,
+          textAlign: 'center'
+        }}>
+          <Typography variant="body2" color="text.secondary">
+            Source: <Box 
+              component="a" 
+              href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3662288/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ 
+                color: '#357960',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              }}
+            >
+              Journal of the International Society of Sports Nutrition, 2013
+            </Box>
           </Typography>
         </Box>
       </Stack>
-
-      {/* Myth/Fact #2 */}
-      <Stack direction="row" spacing={2} alignItems="flex-start">
-        <Box
-          component="img"
-          src="https://thumbs.dreamstime.com/b/saving-money-cartoon-icon-cash-bills-vector-illustration-graphic-design-143356787.jpg"
-          alt="Plant-based athletes"
-          sx={{
-            width: 135,
-            height: 200,
-            objectFit: 'cover',
-            borderRadius: 1
-          }}
-        />
-        <Box>
-          <Typography fontWeight="bold" gutterBottom>
-          Eating Plant-Based Costs 33% Less
-          </Typography>
-          <Typography variant="body2">
-            Whole-food vegan proteins like dried beans cost as little as $1.50/lb compared to $4-$20/lb for meats, and even processed plant alternatives (e.g., tofu, tempeh) deliver comparable protein at lower cost, while Oxford research suggests that fully vegan eating can cut grocery bills by up to 33% (flexitarian -14%, pescatarian +2%) in high-income countries 
-          </Typography>
-        </Box>
-      </Stack>
-      
-      {/* (optional) Sources at bottom */}
-      <Typography
-        variant="caption"
-        color="textSecondary"
-        align="center"
-      >
-        Sources: PMC 6893534, PMC 3662288
-      </Typography>
-    </Stack>
-  </Box>)}
+    </Box>)}
 ]
 
 function App() {

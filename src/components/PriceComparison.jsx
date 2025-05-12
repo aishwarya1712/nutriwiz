@@ -100,7 +100,7 @@ const PriceComparison = () => {
               </Typography>
               
               <Typography variant="body1" color="text.secondary" gutterBottom>
-                Select number of plant-based meals per week:
+                Select number of plant-based days per month:
               </Typography>
 
               <Slider
